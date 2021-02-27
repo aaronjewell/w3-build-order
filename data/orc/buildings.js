@@ -5,9 +5,23 @@ export default [
     gold: 180,
     lumber: 50,
     buildTime: 60,
-    startQty: 0,
+    supply: 0,
     dependsOn: [],
-    units: [],
+    order: 6,
+    units: ["bladeMaster", "farSeer", "shadowHunter", "taurenChieftain"],
+    image: "altarofstorms.png"
+  },
+  {
+    id: "barracks",
+    name: "Barracks",
+    gold: 180,
+    lumber: 50,
+    buildTime: 60,
+    supply: 0,
+    dependsOn: [],
+    order: 2,
+    units: ["grunt"],
+    image: "barracks.png"
   },
   {
     id: "beastiary",
@@ -15,9 +29,11 @@ export default [
     gold: 145,
     lumber: 140,
     buildTime: 60,
-    startQty: 0,
+    supply: 0,
     dependsOn: ["stronghold"],
+    order: 8,
     units: [],
+    image: "beastiary.png"
   },
   {
     id: "fortress",
@@ -25,9 +41,12 @@ export default [
     gold: 1025,
     lumber: 565,
     buildTime: 140,
-    startQty: 0,
+    supply: 0,
+    tier: 3,
     dependsOn: ["stronghold"],
+    order: 1,
     units: [],
+    image: "fortress.png"
   },
   {
     id: "greatHall",
@@ -35,9 +54,11 @@ export default [
     gold: 385,
     lumber: 185,
     buildTime: 150,
-    startQty: 1,
+    supply: 11,
     dependsOn: [],
+    order: 1,
     units: ["peon"],
+    image: "greathall.png"
   },
   {
     id: "orcBurrow",
@@ -45,9 +66,11 @@ export default [
     gold: 160,
     lumber: 40,
     buildTime: 50,
-    startQty: 0,
+    supply: 10,
     dependsOn: [],
+    order: 5,
     units: [],
+    image: "orcburrow.png"
   },
   {
     id: "spiritLodge",
@@ -55,9 +78,11 @@ export default [
     gold: 150,
     lumber: 135,
     buildTime: 70,
-    startQty: 0,
+    supply: 0,
     dependsOn: ["stronghold"],
+    order: 7,
     units: [],
+    image: "spiritlodge.png"
   },
   {
     id: "stronghold",
@@ -65,9 +90,12 @@ export default [
     gold: 700,
     lumber: 375,
     buildTime: 140,
-    startQty: 0,
+    supply: 0,
+    tier: 2,
     dependsOn: ["greatHall"],
+    order: 1,
     units: [],
+    image: "stronghold.png"
   },
   {
     id: "taurenTotem",
@@ -75,9 +103,11 @@ export default [
     gold: 135,
     lumber: 155,
     buildTime: 70,
-    startQty: 0,
+    supply: 0,
     dependsOn: ["warMill", "fortress"],
+    order: 9,
     units: [],
+    image: "taurentotem.png"
   },
   {
     id: "voodooLounge",
@@ -85,9 +115,11 @@ export default [
     gold: 130,
     lumber: 30,
     buildTime: 60,
-    startQty: 0,
+    supply: 0,
     dependsOn: [],
+    order: 10,
     units: [],
+    image: "voodoolounge.png"
   },
   {
     id: "warMill",
@@ -95,9 +127,11 @@ export default [
     gold: 205,
     lumber: 0,
     buildTime: 70,
-    startQty: 0,
+    supply: 0,
     dependsOn: [],
+    order: 3,
     units: [],
+    image: "warmill.png"
   },
   {
     id: "watchTower",
@@ -105,8 +139,10 @@ export default [
     gold: 110,
     lumber: 80,
     buildTime: 60,
-    startQty: 0,
+    supply: 0,
     dependsOn: ["warMill"],
+    order: 4,
     units: [],
+    image: "watchtower.png"
   },
 ];

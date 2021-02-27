@@ -5,87 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>Build Order</title>
 </head>
 
 <body>
     <div id="app">
-        <div>
-            <h2>Game Time</h2>
-            <input v-model.number="tick" type="range" id="ticks" name="ticks" min="0" max="100">
-            <span>{{ tick }}</span>
-        </div>
-        <div>
-            <h2>Plans</h2>
-            <ul>
-                <li v-for="plan in state.plans">{{ plan }}<button @click.prevent="removePlan(plan._id)">Remove</button>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2>Workers</h2>
-            <ul>
-                <li v-for="worker in idleWorkers">
-                    <p>{{ worker.name }}</p>
-                    <button @click.prevent="mine(worker)">Mine Gold</button>
-                    <button @click.prevent="harvest(worker)">Harvest Lumber</button>
-                    <button v-for="building in availableBuildings" @click.prevent="build(worker, building)">Build
-                        {{ building.name }}</button>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2>Harvesting Workers</h2>
-            <ul>
-                <li v-for="worker in harvestingWorkers">
-                    <p>{{ worker.name }}</p>
-                    <div v-if="!newlyAssigned(worker)">
-                        <button @click.prevent="mine(worker)">Mine Gold</button>
-                        <button v-for="building in availableBuildings" @click.prevent="build(worker, building)">Build
-                            {{ building.name }}</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2>Mining Workers</h2>
-            <ul>
-                <li v-for="worker in miningWorkers">
-                    <p>{{ worker.name }}</p>
-                    <div v-if="!newlyAssigned(worker)">
-                        <button @click.prevent="harvest(worker)">Harvest Lumber</button>
-                        <button v-for="building in availableBuildings" @click.prevent="build(worker, building)">Build
-                            {{ building.name }}</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2>Units</h2>
-            <ul>
-                <li v-for="unit in stateAtTick.units">
-                    {{ unit.name }}{{ unit.started + unit.buildTime < tick || unit.completed <= tick ? "Complete" : "Building" }}
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2>Buildings</h2>
-            <ul>
-                <li v-for="building in stateAtTick.buildings">
-                    {{ building.name }}{{ building.started + building.buildTime < tick || building.completed <= tick ? "Complete" : "Building" }}
-                                <button v-for="unit in availableUnits" @click.prevent="spawn(building, unit)">Spawn {{ unit.name }}</button>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2>Available Buildings</h2>
-            <ul>
-                <li v-for="building in availableBuildings">{{ building.name }}</li>
-            </ul>
-        </div>
+        <app></app>
     </div>
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="/dist/bundle.js"></script>
 </body>
 
 </html>

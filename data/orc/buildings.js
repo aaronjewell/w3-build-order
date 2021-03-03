@@ -55,6 +55,7 @@ export default [
     lumber: 185,
     buildTime: 150,
     supply: 11,
+    tier: 1,
     dependsOn: [],
     order: 1,
     units: ["peon"],

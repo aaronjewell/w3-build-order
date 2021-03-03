@@ -1,11 +1,65 @@
 <template>
-  <div style="display:flex;">
-    <div style="flex: 1 1 50%">
-      <div>
+  <div class="container bg-dark text-light">
+    <div class="row">
+      <div class="col">
+        <resource-display
+          :gold="state.gold"
+          :lumber="state.lumber"
+          :supply-used="state.totalSupply - state.supply"
+          :supply-total="state.totalSupply"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <completed-buildings
+          :race="race"
+          :completed-buildings="state.completedBuildings"/>
+      </div>
+      <div class="col">
+        <h2>Units</h2>
+        <unit-list
+          :build-fn="build"
+          :units="state.units"
+          :race="race"
+          :available-buildings="state.availableBuildings"
+          :assign-to-gold-fn="assignToGold"
+          :assign-to-lumber-fn="assignToLumber"
+        />
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <h2>Worker Actions</h2>
+            <worker-actions
+              :build-fn="build"
+              :units="state.units"
+              :race="race"
+              :available-buildings="state.availableBuildings"
+              :assign-to-gold-fn="assignToGold"
+              :assign-to-lumber-fn="assignToLumber"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+              <h2>Train</h2>
+            <train-actions
+              :train-fn="train"
+              :race="race"
+              :buildings="state.buildings"
+              :available-units="state.availableUnits"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
         <h2>Game Time</h2>
         <input
-            style="width: 100%;"
-          @change="onTickChange"
+          style="width: 100%;"
+          @input="onTickChange"
           type="range"
           id="ticks"
           name="ticks"
@@ -15,60 +69,44 @@
         />
         <span>{{ tick }}</span>
       </div>
-      <div style="display: flex;">
-        <div style="margin-right: 32px;">
-          <h2>Gold</h2>
-          <p>{{ state.gold }}</p>
-        </div>
-        <div style="margin-right: 32px;">
-          <h2>Lumber</h2>
-          <p>{{ state.lumber }}</p>
-        </div>
-        <div>
-          <h2>Supply</h2>
-          <p>{{ totalSupply - state.supply }} / {{ totalSupply }}</p>
-        </div>
-      </div>
-      <unit-list
-        :build-fn="build"
-        :units="state.units"
-        :race="race"
-        :available-buildings="state.availableBuildings"
-        :assign-to-gold-fn="assignToGold"
-        :assign-to-lumber-fn="assignToLumber"
-      ></unit-list>
-      <completed-buildings
-        :train-fn="train"
-        :race="race"
-        :completed-buildings="state.buildings"
-        :available-units-fn="availableUnits"
-      ></completed-buildings>
     </div>
-    <action-list
-      style="flex: 1 1 50%;"
-      :remove-action-fn="removeAction"
-      :change-tick-fn="changeTick"
-      :actions="state.actions"
-    ></action-list>
+    <div class="row">
+      <div class="col">
+        <h2>Plans</h2>
+        <action-list
+          style="flex: 1 1 50%;"
+          :remove-action-fn="removeAction"
+          :change-tick-fn="changeTick"
+          :actions="state.actions"
+        ></action-list>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import "normalize.css";
+import "../variables.scss";
+import "bootstrap/scss/bootstrap.scss";
 
-import State from "../State.js";
-import Orc from "../Orc.js";
+import State from "../lib/State.js";
+import Orc from "../lib/Orc.js";
 
 import ActionList from "./ActionList.vue";
 import CompletedBuildings from "./CompletedBuildings.vue";
+import ResourceDisplay from "./ResourceDisplay.vue";
 import UnitList from "./UnitList.vue";
+import TrainActions from "./TrainActions.vue";
+import WorkerActions from "./WorkerActions.vue";
 
 export default {
   name: "App",
   components: {
     ActionList,
     CompletedBuildings,
+    ResourceDisplay,
     UnitList,
+    TrainActions,
+    WorkerActions,
   },
   data: () => ({
     race: null,
@@ -87,24 +125,13 @@ export default {
         this.state.tick = value;
       },
     },
-    totalSupply() {
-        return this.state.actions.reduce((supply, action) => {
-            if (action.type === "build" && action.start + action.duration <= this.tick) {
-                return supply + action.meta.building.supply;
-            }
-            return supply;
-        }, this.race.startingResources.value.supply);
-    }
   },
   methods: {
     changeTick(value) {
-        this.tick = Number(value);
+      this.tick = Number(value);
     },
     onTickChange(event) {
       this.tick = Number(event.target.value);
-    },
-    availableUnits(building) {
-      return this.state.availableUnits(building);
     },
     build(worker, building) {
       this.state.build(worker, building);
@@ -137,33 +164,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-    * {
-        box-sizing: border-box;
-    }
-
-    html {
-        font-size: 16px;
-    }
-
-    body {
-        line-height: 1.4;
-    }
-
-    ul, ol {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    button {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-    }
-
-    img {
-        max-width: 100%;
-    }
-</style>
+<style lang="scss"></style>

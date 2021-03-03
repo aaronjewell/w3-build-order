@@ -1,33 +1,35 @@
 <template>
   <div>
-    <h2>Plans</h2>
-    <ul class="action__list">
-      <li v-for="action in actions" :key="action.id">
-        <div :class="{ action__invalid: !action.valid }">
-          <span>{{ action.start }}s</span> <span>{{ label(action) }}</span>
-          <button @click.prevent="changeTickFn(action.start)">
+    <ul class="action__list list-unstyled">
+      <li class="mb-3 p-2" :class="{ 'bg-danger': !action.valid }" v-for="action in actions" :key="action.id">
+        <div class="w-100 d-flex align-items-center">
+          <span>{{ action.start }}s</span>&nbsp;<span>{{ label(action) }}</span>&nbsp;<span v-if="action.error">{{ action.error }}</span>
+          <button
+            class="btn btn-primary ml-auto mr-2"
+            @click.prevent="changeTickFn(action.start)">
             Go To Start
           </button>
           <button
-            v-if="action.duration > 0"
+            class="btn btn-primary mr-2"
+            :class="{ 'invisible': action.duration === 0 }"
             @click.prevent="changeTickFn(action.start + action.duration)"
           >
             Go To Finish
           </button>
           <button
-            class="action__remove"
+            class="btn btn-danger"
             @click.prevent="removeActionFn(action)"
           >
-            &times;
+            Remove
           </button>
         </div>
       </li>
     </ul>
-    <ul class="action__list">
+    <!-- <ul class="action__list">
       <li v-for="action in actions" :key="action.id">
         <pre>{{ action }}</pre>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
@@ -66,19 +68,6 @@ export default {
 .action {
   &--invalid {
     background-color: tomato;
-  }
-
-  &__list {
-  }
-  &__remove {
-    border: 0;
-    margin: 0;
-    padding: 4px 8px;
-    border-radius: 4px;
-    background-color: tomato;
-    font-size: 1.25rem;
-    line-height: 1;
-    color: black;
   }
 }
 </style>

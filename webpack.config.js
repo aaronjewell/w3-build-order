@@ -25,6 +25,11 @@ export default {
         loader: "vue-loader",
       },
       {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file),
+      },
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },

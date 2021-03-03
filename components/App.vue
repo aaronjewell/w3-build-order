@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col">
         <resource-display
-          :gold="state.gold"
-          :lumber="state.lumber"
-          :supply-used="state.totalSupply - state.supply"
-          :supply-total="state.totalSupply"
+          :gold="buildOrder.gold"
+          :lumber="buildOrder.lumber"
+          :supply-used="buildOrder.totalSupply - buildOrder.supply"
+          :supply-total="buildOrder.totalSupply"
         />
       </div>
     </div>
@@ -14,15 +14,15 @@
       <div class="col">
         <completed-buildings
           :race="race"
-          :completed-buildings="state.completedBuildings"/>
+          :completed-buildings="buildOrder.completedBuildings"/>
       </div>
       <div class="col">
         <h2>Units</h2>
         <unit-list
           :build-fn="build"
-          :units="state.units"
+          :units="buildOrder.units"
           :race="race"
-          :available-buildings="state.availableBuildings"
+          :available-buildings="buildOrder.availableBuildings"
           :assign-to-gold-fn="assignToGold"
           :assign-to-lumber-fn="assignToLumber"
         />
@@ -33,9 +33,9 @@
             <h2>Worker Actions</h2>
             <worker-actions
               :build-fn="build"
-              :units="state.units"
+              :units="buildOrder.units"
               :race="race"
-              :available-buildings="state.availableBuildings"
+              :available-buildings="buildOrder.availableBuildings"
               :assign-to-gold-fn="assignToGold"
               :assign-to-lumber-fn="assignToLumber"
             />
@@ -47,8 +47,8 @@
             <train-actions
               :train-fn="train"
               :race="race"
-              :buildings="state.buildings"
-              :available-units="state.availableUnits"
+              :buildings="buildOrder.buildings"
+              :available-units="buildOrder.availableUnits"
             />
           </div>
         </div>
@@ -77,7 +77,7 @@
           style="flex: 1 1 50%;"
           :remove-action-fn="removeAction"
           :change-tick-fn="changeTick"
-          :actions="state.actions"
+          :actions="buildOrder.actions"
         ></action-list>
       </div>
     </div>
@@ -88,7 +88,7 @@
 import "../variables.scss";
 import "bootstrap/scss/bootstrap.scss";
 
-import State from "../lib/State.js";
+import BuildOrder from "../lib/BuildOrder.js";
 import Orc from "../lib/Orc.js";
 
 import ActionList from "./ActionList.vue";
@@ -110,19 +110,19 @@ export default {
   },
   data: () => ({
     race: null,
-    state: null,
+    buildOrder: null,
   }),
   created() {
     this.race = Orc;
-    this.state = new State(this.race);
+    this.buildOrder = new BuildOrder(this.race);
   },
   computed: {
     tick: {
       get: function() {
-        return this.state.tick;
+        return this.buildOrder.tick;
       },
       set: function(value) {
-        this.state.tick = value;
+        this.buildOrder.tick = value;
       },
     },
   },
@@ -134,22 +134,20 @@ export default {
       this.tick = Number(event.target.value);
     },
     build(building, worker) {
-      this.state.build(building, worker);
+      this.buildOrder.build(building, worker);
     },
     train(unit, building) {
-      this.state.train(unit, building);
+      this.buildOrder.train(unit, building);
     },
     assignToGold(worker) {
-      this.state.assignToGold(worker);
+      this.buildOrder.assignToGold(worker);
     },
     assignToLumber(worker) {
-      this.state.assignToLumber(worker);
+      this.buildOrder.assignToLumber(worker);
     },
     removeAction(action) {
-      this.state.removeAction(action);
+      this.buildOrder.removeAction(action);
     },
   },
 };
 </script>
-
-<style lang="scss"></style>

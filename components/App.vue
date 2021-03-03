@@ -133,32 +133,20 @@ export default {
     onTickChange(event) {
       this.tick = Number(event.target.value);
     },
-    build(worker, building) {
-      this.state.build(worker, building);
-      // hack to force the re-render.
-      this.state.tick++;
-      this.state.tick--;
+    build(building, worker) {
+      this.state.build(building, worker);
     },
     train(unit, building) {
       this.state.train(unit, building);
-      // hack to force the re-render.
-      this.state.tick++;
-      this.state.tick--;
     },
     assignToGold(worker) {
       this.state.assignToGold(worker);
-      this.state.tick++;
-      this.state.tick--;
     },
     assignToLumber(worker) {
       this.state.assignToLumber(worker);
-      this.state.tick++;
-      this.state.tick--;
     },
     removeAction(action) {
       this.state.removeAction(action);
-      this.state.tick++;
-      this.state.tick--;
     },
   },
 };

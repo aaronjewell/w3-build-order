@@ -1,11 +1,10 @@
-import VueLoaderPlugin from "vue-loader/lib/plugin.js";
-import Sass from "sass";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+const { join } = require("path");
+const Sass = require("sass");
+const { fileURLToPath } = require("url");
+const VueLoaderPlugin = require("vue-loader/lib/plugin.js");
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
-export default {
+module.exports = {
   entry: "./index.js",
   output: {
     path: join(__dirname, "dist"),

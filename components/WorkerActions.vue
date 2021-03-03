@@ -11,7 +11,7 @@
         }"
         v-for="building in availableBuildings"
         :key="building.id"
-        @click.prevent="buildFn(builder, building)"
+        @click.prevent="buildFn(building, builder)"
         class="unit__action-button"
         :title="`${building.name}`"
       >

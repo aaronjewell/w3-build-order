@@ -8,7 +8,7 @@
         class="training__button"
         :title="`Train ${upgrade.name}`"
       >
-        <img class="training__unit-image" :src="`/images/${upgrade.image}`" />
+        <img class="training__unit-image" :src="`images/${upgrade.image}`" />
       </button>
     </div>
   </div>
@@ -30,10 +30,10 @@ export default {
   },
   methods: {
     buildingForUpgrade(upgradeId) {
-      return this.buildings.find((b) => b.upgrades.includes(upgradeId));
+      return this.buildings.find(b => b.upgrades.includes(upgradeId))
     },
   },
-};
+}
 </script>
 
 <style lang="scss"></style>

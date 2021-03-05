@@ -1,16 +1,16 @@
 <template>
-<div class="training">
-  <div class="training__units d-flex flex-wrap">
-    <button
-      v-for="unit in availableUnits"
-      :key="unit.id"
-      @click.prevent="trainFn(unit, buildingForUnit(unit.id))"
-      class="training__button"
-      :title="`Train ${unit.name}`"
-    >
-      <img class="training__unit-image" :src="`/images/${unit.image}`" />
-    </button>
-  </div>
+  <div class="training">
+    <div class="training__units d-flex flex-wrap">
+      <button
+        v-for="unit in availableUnits"
+        :key="unit.id"
+        @click.prevent="trainFn(unit, buildingForUnit(unit.id))"
+        class="training__button"
+        :title="`Train ${unit.name}`"
+      >
+        <img class="training__unit-image" :src="`images/${unit.image}`" />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -30,10 +30,10 @@ export default {
   },
   methods: {
     buildingForUnit(unitId) {
-      return this.buildings.find((b) => b.units.includes(unitId));
-    }
+      return this.buildings.find(b => b.units.includes(unitId))
+    },
   },
-};
+}
 </script>
 
 <style lang="scss">

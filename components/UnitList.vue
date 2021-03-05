@@ -6,7 +6,7 @@
           <div class="unit__display">
             <img
               class="unit__image"
-              :src="`/images/${unit.image}`"
+              :src="`images/${unit.image}`"
               :alt="unit.name"
             />
           </div>
@@ -38,13 +38,13 @@ export default {
   },
   methods: {
     topOffset(building) {
-      return Math.floor((building.order - 1) / 4) * 32;
+      return Math.floor((building.order - 1) / 4) * 32
     },
     leftOffset(building) {
-      return ((building.order - 1) % 4) * 32;
+      return ((building.order - 1) % 4) * 32
     },
   },
-};
+}
 </script>
 
 <style lang="scss">

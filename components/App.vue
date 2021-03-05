@@ -119,7 +119,6 @@ import CompletedUpgrades from "./CompletedUpgrades.vue"
 import ResourceDisplay from "./ResourceDisplay.vue"
 import BuildingActions from "./BuildingActions.vue"
 import UnitList from "./UnitList.vue"
-import UpgradeList from "./UpgradeList.vue"
 import WorkerActions from "./WorkerActions.vue"
 
 export default {
@@ -131,7 +130,6 @@ export default {
     CompletedUpgrades,
     ResourceDisplay,
     UnitList,
-    UpgradeList,
     WorkerActions,
   },
   data: () => ({

@@ -23,11 +23,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+$size: 64px;
+
 .upgrades {
   &__image {
-    width: 32px;
-    height: 32px;
+    width: $size;
+    height: $size;
   }
 }
 </style>

@@ -24,7 +24,7 @@ export default {
     availableActions: {
       required: true,
     },
-    allBuildingActions: {
+    allActions: {
       required: true,
     },
     building: {

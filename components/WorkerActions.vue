@@ -125,17 +125,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+$size: 64px;
+
 .unit {
   &__image {
-    height: 32px;
-    width: 32px;
+    height: $size;
+    width: $size;
   }
 
   &__actions {
     display: grid;
-    grid-template-columns: max-content max-content max-content max-content;
-    grid-template-rows: max-content max-content max-content;
+    grid-template-columns: $size $size $size $size;
+    grid-template-rows: $size $size $size;
     position: relative;
   }
 
@@ -143,15 +145,15 @@ export default {
     margin: 0;
     padding: 0;
     border: 0;
-    height: 32px;
-    width: 32px;
+    height: $size;
+    width: $size;
     background-color: black;
     color: white;
   }
 
   &__action-image {
-    width: 32px;
-    height: 32px;
+    width: $size;
+    height: $size;
   }
 }
 </style>

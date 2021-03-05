@@ -25,6 +25,7 @@
             <h2>Buildings</h2>
             <building-list
               @selected="building => (selected = building)"
+              :selected="selected"
               :completed-buildings="buildOrder.completedBuildings"
               :buildings="buildOrder.buildings"
             />
@@ -35,6 +36,7 @@
             <h2>Units</h2>
             <unit-list
               @selected="unit => (selected = unit)"
+              :selected="selected"
               :units="buildOrder.units"
               :completed-units="buildOrder.completedUnits"
             />

@@ -49,6 +49,8 @@ export default {
 </script>
 
 <style lang="scss">
+$size: 64px;
+
 .training {
   display: flex;
 
@@ -62,15 +64,15 @@ export default {
     border: 0;
     top: 0;
     left: 0;
-    height: 32px;
-    width: 32px;
+    height: $size;
+    width: $size;
     background-color: black;
     color: white;
   }
 
   &__unit-image {
-    width: 32px;
-    height: 32px;
+    width: $size;
+    height: $size;
   }
 }
 </style>

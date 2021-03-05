@@ -12,16 +12,28 @@
     </div>
     <div class="row">
       <div class="col">
-        <completed-buildings
-          :race="race"
-          :completed-buildings="buildOrder.completedBuildings"/>
+        <div class="row">
+          <div class="col">
+            <h2>Buildings</h2>
+            <completed-buildings
+              :completed-buildings="buildOrder.completedBuildings"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h2>Upgrades</h2>
+            <completed-upgrades
+              :completed-upgrades="buildOrder.upgrades"
+            />
+          </div>
+        </div>
       </div>
       <div class="col">
         <h2>Units</h2>
         <unit-list
           :build-fn="build"
           :units="buildOrder.units"
-          :race="race"
           :available-buildings="buildOrder.availableBuildings"
           :assign-to-gold-fn="assignToGold"
           :assign-to-lumber-fn="assignToLumber"
@@ -34,7 +46,6 @@
             <worker-actions
               :build-fn="build"
               :units="buildOrder.units"
-              :race="race"
               :available-buildings="buildOrder.availableBuildings"
               :assign-to-gold-fn="assignToGold"
               :assign-to-lumber-fn="assignToLumber"
@@ -43,12 +54,21 @@
         </div>
         <div class="row">
           <div class="col">
-              <h2>Train</h2>
+            <h2>Train</h2>
             <train-actions
               :train-fn="train"
-              :race="race"
               :buildings="buildOrder.buildings"
               :available-units="buildOrder.availableUnits"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h2>Upgrade</h2>
+            <upgrade-list
+              :upgrade-fn="upgrade"
+              :buildings="buildOrder.buildings"
+              :available-upgrades="buildOrder.availableUpgrades"
             />
           </div>
         </div>
@@ -64,7 +84,7 @@
           id="ticks"
           name="ticks"
           min="0"
-          max="200"
+          max="600"
           :value="tick"
         />
         <span>{{ tick }}</span>
@@ -93,9 +113,11 @@ import Orc from "../lib/Orc.js";
 
 import ActionList from "./ActionList.vue";
 import CompletedBuildings from "./CompletedBuildings.vue";
+import CompletedUpgrades from "./CompletedUpgrades.vue";
 import ResourceDisplay from "./ResourceDisplay.vue";
-import UnitList from "./UnitList.vue";
 import TrainActions from "./TrainActions.vue";
+import UnitList from "./UnitList.vue";
+import UpgradeList from "./UpgradeList.vue";
 import WorkerActions from "./WorkerActions.vue";
 
 export default {
@@ -103,9 +125,11 @@ export default {
   components: {
     ActionList,
     CompletedBuildings,
+    CompletedUpgrades,
     ResourceDisplay,
-    UnitList,
     TrainActions,
+    UnitList,
+    UpgradeList,
     WorkerActions,
   },
   data: () => ({
@@ -138,6 +162,9 @@ export default {
     },
     train(unit, building) {
       this.buildOrder.train(unit, building);
+    },
+    upgrade(upgrade, building) {
+      this.buildOrder.upgrade(upgrade, building);
     },
     assignToGold(worker) {
       this.buildOrder.assignToGold(worker);

@@ -9,7 +9,8 @@ export default [
     dependsOn: [],
     order: 6,
     units: ["bladeMaster", "farSeer", "shadowHunter", "taurenChieftain"],
-    image: "altarofstorms.png"
+    upgrades: [],
+    image: "orc/altarofstorms.png",
   },
   {
     id: "barracks",
@@ -21,7 +22,8 @@ export default [
     dependsOn: [],
     order: 2,
     units: ["grunt"],
-    image: "barracks.png"
+    upgrades: ["trollRegeneration", "berserkerUpgrade", "burningOil"],
+    image: "orc/barracks.png",
   },
   {
     id: "beastiary",
@@ -33,20 +35,8 @@ export default [
     dependsOn: ["stronghold"],
     order: 8,
     units: [],
-    image: "beastiary.png"
-  },
-  {
-    id: "fortress",
-    name: "Fortress",
-    gold: 1025,
-    lumber: 565,
-    buildTime: 140,
-    supply: 0,
-    tier: 3,
-    dependsOn: ["stronghold"],
-    order: 1,
-    units: [],
-    image: "fortress.png"
+    upgrades: ["ensnare", "envenomedSpears", "liquidFire"],
+    image: "orc/beastiary.png",
   },
   {
     id: "greatHall",
@@ -59,7 +49,8 @@ export default [
     dependsOn: [],
     order: 1,
     units: ["peon"],
-    image: "greathall.png"
+    upgrades: ["pillage", "unitInventory", "stronghold", "fortress"],
+    image: "orc/greathall.png",
   },
   {
     id: "orcBurrow",
@@ -71,7 +62,8 @@ export default [
     dependsOn: [],
     order: 5,
     units: [],
-    image: "orcburrow.png"
+    upgrades: [],
+    image: "orc/orcburrow.png",
   },
   {
     id: "spiritLodge",
@@ -83,20 +75,13 @@ export default [
     dependsOn: ["stronghold"],
     order: 7,
     units: [],
-    image: "spiritlodge.png"
-  },
-  {
-    id: "stronghold",
-    name: "Stronghold",
-    gold: 700,
-    lumber: 375,
-    buildTime: 140,
-    supply: 0,
-    tier: 2,
-    dependsOn: ["greatHall"],
-    order: 1,
-    units: [],
-    image: "stronghold.png"
+    upgrades: [
+      "shamanAdeptTraining",
+      "shamanMasterTraining",
+      "witchDoctorAdeptTraining",
+      "witchDoctorMasterTraining",
+    ],
+    image: "orc/spiritlodge.png",
   },
   {
     id: "taurenTotem",
@@ -108,7 +93,12 @@ export default [
     dependsOn: ["warMill", "fortress"],
     order: 9,
     units: [],
-    image: "taurentotem.png"
+    upgrades: [
+      "spiritWalkeAdeptTraining",
+      "spiritWalkerMasterTraining",
+      "pulverizeDamageIncrease",
+    ],
+    image: "orc/taurentotem.png",
   },
   {
     id: "voodooLounge",
@@ -120,7 +110,8 @@ export default [
     dependsOn: [],
     order: 10,
     units: [],
-    image: "voodoolounge.png"
+    upgrades: [],
+    image: "orc/voodoolounge.png",
   },
   {
     id: "warMill",
@@ -132,7 +123,18 @@ export default [
     dependsOn: [],
     order: 3,
     units: [],
-    image: "warmill.png"
+    upgrades: [
+      "spikedBarricades",
+      "improvedSpikedBarricades",
+      "reinforcedDefenses",
+      "steelMeleeWeapons",
+      "thoriumMeleeWeapons",
+      "arcaniteMeleeWeapons",
+      "steelRangedWeapons",
+      "thoriumRangedWeapons",
+      "arcaniteRangedWeapons",
+    ],
+    image: "orc/warmill.png",
   },
   {
     id: "watchTower",
@@ -144,6 +146,7 @@ export default [
     dependsOn: ["warMill"],
     order: 4,
     units: [],
-    image: "watchtower.png"
+    upgrades: [],
+    image: "orc/watchtower.png",
   },
-];
+]

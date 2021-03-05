@@ -9,7 +9,7 @@ export default [
         canHarvest: true,
         canMine: true,
         canBuild: true,
-        image: "peon.png"
+        image: "orc/peon.png"
     },
     {
         id: "grunt",
@@ -18,7 +18,7 @@ export default [
         lumber: 0,
         supply: 3,
         buildTime: 30,
-        image: "grunt.png"
+        image: "orc/grunt.png"
     },
     {
         id: "headhunter",
@@ -27,7 +27,7 @@ export default [
         lumber: 20,
         supply: 2,
         buildTime: 20,
-        image: "headhunter.png"
+        image: "orc/headhunter.png"
     },
     {
         id: "demolisher",
@@ -36,7 +36,7 @@ export default [
         lumber: 50,
         supply: 4,
         buildTime: 40,
-        image: "demolisher.png"
+        image: "orc/demolisher.png"
     },
     {
         id: "shaman",
@@ -45,7 +45,7 @@ export default [
         lumber: 20,
         supply: 2,
         buildTime: 30,
-        image: "shaman.png"
+        image: "orc/shaman.png"
     },
     {
         id: "witchDoctor",
@@ -54,7 +54,7 @@ export default [
         lumber: 25,
         supply: 2,
         buildTime:  30,
-        image: "witchdoctor.png"
+        image: "orc/witchdoctor.png"
     },
     {
         id: "raider",
@@ -63,7 +63,7 @@ export default [
         lumber: 40,
         supply: 3,
         buildTime: 28,
-        image: "wolfrider.png"
+        image: "orc/wolfrider.png"
     },
     {
         id: "kodoBeast",
@@ -72,7 +72,7 @@ export default [
         lumber: 60,
         supply: 4,
         buildTime: 30,
-        image: "kodobeast.png"
+        image: "orc/kodobeast.png"
     },
     {
         id: "windRider",
@@ -81,7 +81,7 @@ export default [
         lumber: 40,
         supply: 4,
         buildTime: 35,
-        image: "wyvernrider.png"
+        image: "orc/wyvernrider.png"
     },
     {
         id: "trollBatrider",
@@ -90,7 +90,7 @@ export default [
         lumber: 40,
         supply: 2,
         buildTime: 28,
-        image: "batrider.png"
+        image: "orc/batrider.png"
     },
     {
         id: "tauren",
@@ -99,7 +99,7 @@ export default [
         lumber: 80,
         supply: 5,
         buildTime: 44,
-        image: "tauren.png"
+        image: "orc/tauren.png"
     },
     {
         id: "bladeMaster",
@@ -110,7 +110,7 @@ export default [
         buildTime: 55,
         limit: 1,
         isHero: true,
-        image: "blademaster.png"
+        image: "orc/blademaster.png"
     },
     {
         id: "farSeer",
@@ -121,7 +121,7 @@ export default [
         buildTime: 55,
         limit: 1,
         isHero: true,
-        image: "farseer.png"
+        image: "orc/farseer.png"
     },
     {
         id: "taurenChieftain",
@@ -132,7 +132,7 @@ export default [
         buildTime: 55,
         limit: 1,
         isHero: true,
-        image: "chieftain.png"
+        image: "orc/chieftain.png"
     },
     {
         id: "shadowHunter",
@@ -143,6 +143,6 @@ export default [
         buildTime: 55,
         limit: 1,
         isHero: true,
-        image: "shadowhunter.png"
+        image: "orc/shadowhunter.png"
     }
 ]

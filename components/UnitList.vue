@@ -6,7 +6,7 @@
           <div class="unit__display">
             <img
               class="unit__image"
-              :src="`/images/${race.id}/${unit.image}`"
+              :src="`/images/${unit.image}`"
               :alt="unit.name"
             />
           </div>
@@ -20,9 +20,6 @@
 export default {
   name: "UnitList",
   props: {
-    race: {
-      required: true,
-    },
     availableBuildings: {
       required: true,
     },

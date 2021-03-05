@@ -17,7 +17,7 @@
       >
         <img
           class="unit__action-image"
-          :src="`/images/${race.id}/${building.image}`"
+          :src="`/images/${building.image}`"
         />
       </button>
       <button
@@ -63,9 +63,6 @@ export default {
       required: true,
     },
     buildFn: {
-      required: true,
-    },
-    race: {
       required: true,
     },
     units: {

@@ -8,7 +8,7 @@
       class="training__button"
       :title="`Train ${unit.name}`"
     >
-      <img class="training__unit-image" :src="`/images/${race.id}/${unit.image}`" />
+      <img class="training__unit-image" :src="`/images/${unit.image}`" />
     </button>
   </div>
   </div>
@@ -23,9 +23,6 @@ export default {
     },
     buildings: {
       required: true,
-    },
-    race: {
-      require: true,
     },
     trainFn: {
       require: true,

@@ -15,10 +15,7 @@
         class="unit__action-button"
         :title="`${building.name}`"
       >
-        <img
-          class="unit__action-image"
-          :src="`/images/${building.image}`"
-        />
+        <img class="unit__action-image" :src="`images/${building.image}`" />
       </button>
       <button
         :style="{
@@ -31,7 +28,7 @@
       >
         <img
           class="unit__action-image"
-          :src="`/images/common/chestofgold.png`"
+          :src="`images/common/chestofgold.png`"
         />
       </button>
       <button
@@ -43,7 +40,7 @@
         v-if="harvester"
         @click.prevent="assignToLumberFn(harvester)"
       >
-        <img class="unit__action-image" :src="`/images/common/lumber.png`" />
+        <img class="unit__action-image" :src="`images/common/lumber.png`" />
       </button>
     </div>
   </div>
@@ -71,29 +68,29 @@ export default {
   },
   computed: {
     buildingActions() {
-      return this.availableBuildings.filter((action) =>
-        this.units.some((unit) => unit.canBuild)
-      );
+      return this.availableBuildings.filter(action =>
+        this.units.some(unit => unit.canBuild),
+      )
     },
     miner() {
-      return this.units.find((unit) => unit.canMine);
+      return this.units.find(unit => unit.canMine)
     },
     harvester() {
-      return this.units.find((unit) => unit.canHarvest);
+      return this.units.find(unit => unit.canHarvest)
     },
     builder() {
-      return this.units.find((unit) => unit.canBuild);
+      return this.units.find(unit => unit.canBuild)
     },
   },
   methods: {
     topOffset(building) {
-      return Math.floor((building.order - 1) / 4) * 32;
+      return Math.floor((building.order - 1) / 4) * 32
     },
     leftOffset(building) {
-      return ((building.order - 1) % 4) * 32;
+      return ((building.order - 1) % 4) * 32
     },
   },
-};
+}
 </script>
 
 <style lang="scss">

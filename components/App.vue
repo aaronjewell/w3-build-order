@@ -48,6 +48,7 @@
               v-if="selected && selected.canBuild"
               :build-fn="build"
               :unit="selected"
+              :all-buildings="buildOrder.allBuildings"
               :available-buildings="buildOrder.availableBuildings"
               :assign-to-gold-fn="assignToGold"
               :assign-to-lumber-fn="assignToLumber"
@@ -63,6 +64,7 @@
               :train-fn="train"
               :upgrade-fn="upgrade"
               @action="() => (selected = null)"
+              :all-actions="buildOrder.allBuildingActions"
               :available-actions="[
                 ...availableUnitsToBuild,
                 ...availableUpgradesToResearch,
@@ -163,6 +165,12 @@ export default {
         this.selected.type === "building" &&
         this.buildOrder.availableUpgradesForBuilding(this.selected)
       )
+    },
+    allBuildingActions() {
+      this.selected &&
+        this.selected.type &&
+        this.selected.type === "building" &&
+        this.buildOrder.allBuildingActions(this.selected)
     },
   },
   methods: {

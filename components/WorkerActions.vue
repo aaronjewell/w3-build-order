@@ -1,13 +1,32 @@
 <template>
-  <div>
+  <div class="position-relative">
     <div
-      class="unit__actions"
+      class="unit__actions position-absolute"
       v-if="miner || harvester || buildingActions.length"
     >
       <button
         :style="{
-          top: topOffset(building) + 'px',
-          left: leftOffset(building) + 'px',
+          'grid-row': row(building),
+          'grid-column': column(building),
+          opacity: 0.3,
+        }"
+        v-for="building in allBuildings"
+        :key="building.id"
+        class="unit__action-button"
+        :title="`${building.name}`"
+      >
+        <img class="unit__action-image" :src="`images/${building.image}`" />
+      </button>
+    </div>
+    <div
+      class="unit__actions position-relative"
+      v-if="miner || harvester || buildingActions.length"
+      style="z-index: 1"
+    >
+      <button
+        :style="{
+          'grid-row': row(building),
+          'grid-column': column(building),
         }"
         v-for="building in availableBuildings"
         :key="building.id"
@@ -19,8 +38,8 @@
       </button>
       <button
         :style="{
-          top: topOffset({ order: 11 }) + 'px',
-          left: leftOffset({ order: 11 }) + 'px',
+          'grid-row': row({ order: 11 }),
+          'grid-column': column({ order: 11 }),
         }"
         class="unit__action-button"
         v-if="miner"
@@ -33,8 +52,8 @@
       </button>
       <button
         :style="{
-          top: topOffset({ order: 12 }) + 'px',
-          left: leftOffset({ order: 12 }) + 'px',
+          'grid-row': row({ order: 12 }),
+          'grid-column': column({ order: 12 }),
         }"
         class="unit__action-button"
         v-if="harvester"
@@ -56,10 +75,13 @@ export default {
     assignToLumberFn: {
       required: true,
     },
-    availableBuildings: {
+    buildFn: {
       required: true,
     },
-    buildFn: {
+    allBuildings: {
+      required: true,
+    },
+    availableBuildings: {
       required: true,
     },
     unit: {
@@ -81,11 +103,11 @@ export default {
     },
   },
   methods: {
-    topOffset(building) {
-      return Math.floor((building.order - 1) / 4) * 32
+    row(building) {
+      return Math.floor((building.order - 1) / 4) + 1
     },
-    leftOffset(building) {
-      return ((building.order - 1) % 4) * 32
+    column(building) {
+      return ((building.order - 1) % 4) + 1
     },
     build(buildingData, unit) {
       this.$emit("action")
@@ -105,26 +127,22 @@ export default {
 
 <style lang="scss">
 .unit {
-  display: flex;
-
   &__image {
     height: 32px;
     width: 32px;
   }
 
   &__actions {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content;
+    grid-template-rows: max-content max-content max-content;
     position: relative;
-    width: 128px;
-    height: 96px;
   }
 
   &__action-button {
     margin: 0;
     padding: 0;
     border: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 32px;
     width: 32px;
     background-color: black;

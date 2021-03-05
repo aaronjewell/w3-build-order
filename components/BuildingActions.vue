@@ -2,13 +2,16 @@
   <div class="training">
     <div class="training__units d-flex flex-wrap">
       <button
-        v-for="unit in availableUnits"
-        :key="unit.id"
-        @click.prevent="trainFn(unit, buildingForUnit(unit.id))"
+        v-for="unitOrUpgrade in availableActions"
+        :key="unitOrUpgrade.id"
+        @click.prevent="doAction(unitOrUpgrade, building)"
         class="training__button"
-        :title="`Train ${unit.name}`"
+        :title="`Train ${unitOrUpgrade.name}`"
       >
-        <img class="training__unit-image" :src="`images/${unit.image}`" />
+        <img
+          class="training__unit-image"
+          :src="`images/${unitOrUpgrade.image}`"
+        />
       </button>
     </div>
   </div>
@@ -16,21 +19,27 @@
 
 <script>
 export default {
-  name: "TrainActions",
+  name: "BuildingActions",
   props: {
-    availableUnits: {
+    availableActions: {
       required: true,
     },
-    buildings: {
-      required: true,
+    building: {
+      require: true,
     },
     trainFn: {
       require: true,
     },
+    upgradeFn: {
+      require: true,
+    },
   },
   methods: {
-    buildingForUnit(unitId) {
-      return this.buildings.find(b => b.units.includes(unitId))
+    doAction(unitOrUpgrade) {
+      this.$emit("action")
+      return unitOrUpgrade.type === "unit"
+        ? this.trainFn(unitOrUpgrade, this.building)
+        : this.upgradeFn(unitOrUpgrade, this.building)
     },
   },
 }

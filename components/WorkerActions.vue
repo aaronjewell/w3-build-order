@@ -11,7 +11,7 @@
         }"
         v-for="building in availableBuildings"
         :key="building.id"
-        @click.prevent="buildFn(building, builder)"
+        @click.prevent="build(building, unit)"
         class="unit__action-button"
         :title="`${building.name}`"
       >
@@ -24,7 +24,7 @@
         }"
         class="unit__action-button"
         v-if="miner"
-        @click.prevent="assignToGoldFn(miner)"
+        @click.prevent="assignToGold(unit)"
       >
         <img
           class="unit__action-image"
@@ -38,7 +38,7 @@
         }"
         class="unit__action-button"
         v-if="harvester"
-        @click.prevent="assignToLumberFn(harvester)"
+        @click.prevent="assignToLumber(unit)"
       >
         <img class="unit__action-image" :src="`images/common/lumber.png`" />
       </button>
@@ -62,24 +62,22 @@ export default {
     buildFn: {
       required: true,
     },
-    units: {
+    unit: {
       required: true,
     },
   },
   computed: {
     buildingActions() {
-      return this.availableBuildings.filter(action =>
-        this.units.some(unit => unit.canBuild),
-      )
+      return this.availableBuildings
     },
     miner() {
-      return this.units.find(unit => unit.canMine)
+      return this.unit.canMine
     },
     harvester() {
-      return this.units.find(unit => unit.canHarvest)
+      return this.unit.canHarvest
     },
     builder() {
-      return this.units.find(unit => unit.canBuild)
+      return this.unit.canBuild
     },
   },
   methods: {
@@ -88,6 +86,18 @@ export default {
     },
     leftOffset(building) {
       return ((building.order - 1) % 4) * 32
+    },
+    build(buildingData, unit) {
+      this.$emit("action")
+      return this.buildFn(buildingData, unit)
+    },
+    assignToGold(unit) {
+      this.$emit("action")
+      return this.assignToGoldFn(unit)
+    },
+    assignToLumber(unit) {
+      this.$emit("action")
+      return this.assignToLumberFn(unit)
     },
   },
 }

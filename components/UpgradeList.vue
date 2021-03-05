@@ -4,7 +4,7 @@
       <button
         v-for="upgrade in availableUpgrades"
         :key="upgrade.id"
-        @click.prevent="upgradeFn(upgrade, buildingForUpgrade(upgrade.id))"
+        @click.prevent="upgradeFn(upgrade, building)"
         class="training__button"
         :title="`Train ${upgrade.name}`"
       >
@@ -21,16 +21,8 @@ export default {
     availableUpgrades: {
       required: true,
     },
-    buildings: {
+    building: {
       required: true,
-    },
-    upgradeFn: {
-      require: true,
-    },
-  },
-  methods: {
-    buildingForUpgrade(upgradeId) {
-      return this.buildings.find(b => b.upgrades.includes(upgradeId))
     },
   },
 }

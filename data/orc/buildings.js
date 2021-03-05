@@ -2,6 +2,7 @@ export default [
   {
     id: "altarOfStorms",
     name: "Altar of Storms",
+    type: "building",
     gold: 180,
     lumber: 50,
     buildTime: 60,
@@ -15,6 +16,7 @@ export default [
   {
     id: "barracks",
     name: "Barracks",
+    type: "building",
     gold: 180,
     lumber: 50,
     buildTime: 60,
@@ -28,6 +30,7 @@ export default [
   {
     id: "beastiary",
     name: "Beastiary",
+    type: "building",
     gold: 145,
     lumber: 140,
     buildTime: 60,
@@ -41,6 +44,7 @@ export default [
   {
     id: "greatHall",
     name: "Great Hall",
+    type: "building",
     gold: 385,
     lumber: 185,
     buildTime: 150,
@@ -55,6 +59,7 @@ export default [
   {
     id: "orcBurrow",
     name: "Orc Burrow",
+    type: "building",
     gold: 160,
     lumber: 40,
     buildTime: 50,
@@ -68,6 +73,7 @@ export default [
   {
     id: "spiritLodge",
     name: "Spirit Lodge",
+    type: "building",
     gold: 150,
     lumber: 135,
     buildTime: 70,
@@ -86,6 +92,7 @@ export default [
   {
     id: "taurenTotem",
     name: "Tauren Totem",
+    type: "building",
     gold: 135,
     lumber: 155,
     buildTime: 70,
@@ -103,6 +110,7 @@ export default [
   {
     id: "voodooLounge",
     name: "Voodoo Lounge",
+    type: "building",
     gold: 130,
     lumber: 30,
     buildTime: 60,
@@ -116,6 +124,7 @@ export default [
   {
     id: "warMill",
     name: "War Mill",
+    type: "building",
     gold: 205,
     lumber: 0,
     buildTime: 70,
@@ -139,6 +148,7 @@ export default [
   {
     id: "watchTower",
     name: "Watch Tower",
+    type: "building",
     gold: 110,
     lumber: 80,
     buildTime: 60,

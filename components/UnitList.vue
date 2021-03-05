@@ -1,8 +1,29 @@
 <template>
   <div>
     <ul class="d-flex list-unstyled">
-      <li v-for="unit in units" :key="unit._id">
-        <div class="unit">
+      <li
+        class="position-relative"
+        v-for="unit in completedUnits"
+        :key="unit._id"
+      >
+        <div
+          class="unit position-absolute"
+          style="top: 0; left: 0; opacity: 0.5;"
+        >
+          <div class="unit__display">
+            <img
+              class="unit__image"
+              :src="`images/${unit.image}`"
+              :alt="unit.name"
+            />
+          </div>
+        </div>
+        <div
+          class="unit position-relative"
+          style="z-index: 1;"
+          :style="{ visibility: availableUnit(unit) ? 'visible' : 'hidden' }"
+          @click="() => $emit('selected', unit)"
+        >
           <div class="unit__display">
             <img
               class="unit__image"
@@ -20,28 +41,19 @@
 export default {
   name: "UnitList",
   props: {
-    availableBuildings: {
-      required: true,
-    },
     units: {
       required: true,
     },
-    buildFn: {
-      required: true,
-    },
-    assignToGoldFn: {
-      required: true,
-    },
-    assignToLumberFn: {
+    completedUnits: {
       required: true,
     },
   },
+  data: () => ({
+    selected: null,
+  }),
   methods: {
-    topOffset(building) {
-      return Math.floor((building.order - 1) / 4) * 32
-    },
-    leftOffset(building) {
-      return ((building.order - 1) % 4) * 32
+    availableUnit(completed) {
+      return this.units.find(u => u._id === completed._id)
     },
   },
 }
@@ -49,33 +61,9 @@ export default {
 
 <style lang="scss">
 .unit {
-  display: flex;
-
   &__image {
     height: 32px;
     width: 32px;
-  }
-
-  &__actions {
-    position: relative;
-    width: 128px;
-    height: 96px;
-  }
-
-  &__action-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 32px;
-    width: 32px;
-    font-size: 0.5rem;
-    background-color: black;
-    color: white;
-  }
-
-  &__action-image {
-    width: 32px;
-    height: 32px;
   }
 }
 </style>

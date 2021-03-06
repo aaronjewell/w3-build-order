@@ -45,17 +45,17 @@ export default {
       required: true,
     },
   },
-  data: () => ({
-    marks: val =>
-      val % 60 === 0
-        ? {
-            label: `${val / 60}m`,
-          }
-        : false,
-  }),
   methods: {
     tooltipFormatter(val) {
       return formatTime(val)
+    },
+    marks(val) {
+      if (val % 60 === 0) {
+        return {
+          label: `${val / 60}m`,
+        }
+      }
+      return false
     },
   },
 }

@@ -3,12 +3,13 @@
     <ul class="units d-flex list-unstyled position-relative">
       <li
         class="units__item position-relative"
-        v-for="unit in completedUnits"
+        v-for="unit in sortedCompletedUnits"
         :key="unit._id"
         :class="{ selected: isSelected(unit) }"
       >
-        <div
+        <button
           class="unit position-absolute"
+          disabled
           style="top: 0; left: 0; opacity: 0.3;"
         >
           <div class="unit__display">
@@ -18,12 +19,12 @@
               :alt="unit.name"
             />
           </div>
-        </div>
-        <div
-          class="unit position-relative"
+        </button>
+        <button
+          class="unit fade-in position-relative"
           style="z-index: 1;"
           :style="{ visibility: availableUnit(unit) ? 'visible' : 'hidden' }"
-          @click="() => $emit('selected', unit)"
+          @click.prevent="() => $emit('selected', unit)"
         >
           <div class="unit__display">
             <img
@@ -32,7 +33,31 @@
               :alt="unit.name"
             />
           </div>
+        </button>
+      </li>
+      <li
+        v-for="inprogress in inprogressUnits"
+        :key="inprogress.inprogressId"
+        class="units__item position-relative"
+      >
+        <div class="unit fade-in-disabled">
+          <div class="unit__display">
+            <img
+              class="unit__image"
+              :src="`images/${inprogress.unit.image}`"
+              :alt="inprogress.unit.name"
+            />
+          </div>
         </div>
+        <span
+          :style="{
+            right: `${((inprogress.end - inprogress.current) /
+              (inprogress.end - inprogress.start)) *
+              100}%`,
+            transition: 'right 200ms ease-in-out',
+          }"
+          class="unit__progress-bar"
+        ></span>
       </li>
     </ul>
   </div>
@@ -45,11 +70,19 @@ export default {
     units: {
       required: true,
     },
+    inprogressUnits: {
+      required: true,
+    },
     completedUnits: {
       required: true,
     },
     selected: {
       required: true,
+    },
+  },
+  computed: {
+    sortedCompletedUnits() {
+      return this.completedUnits.sort((a, b) => a._id - b._id)
     },
   },
   methods: {
@@ -74,15 +107,33 @@ $size: 64px;
   &__item {
     z-index: 0;
     &.selected {
-      box-shadow: 0 0 0 2px yellow;
+      box-shadow: 0 0 8px 2px hsl(0, 0%, 95%);
       z-index: 1;
     }
   }
 }
 .unit {
+  padding: 0;
+  margin: 0;
+  transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    transform: translateX(-1px) translateY(-1px);
+    box-shadow: 2px 2px 8px -4px hsl(0, 0%, 75%);
+  }
+
   &__image {
     height: $size;
     width: $size;
+  }
+
+  &__progress-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: yellow;
   }
 }
 </style>

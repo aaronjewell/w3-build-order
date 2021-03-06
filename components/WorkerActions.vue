@@ -1,7 +1,7 @@
 <template>
-  <div class="position-relative">
+  <div class="position-relative fade-in-quick d-inline-block">
     <div
-      class="unit__actions position-absolute"
+      class="unit__actions position-absolute unit__actions--all-actions"
       v-if="miner || harvester || buildingActions.length"
     >
       <button
@@ -10,6 +10,7 @@
           'grid-column': column(building),
           opacity: 0.3,
         }"
+        disabled
         v-for="building in allBuildings"
         :key="building.id"
         class="unit__action-button"
@@ -138,17 +139,30 @@ $size: 64px;
     display: grid;
     grid-template-columns: $size $size $size $size;
     grid-template-rows: $size $size $size;
+    grid-gap: 4px;
+    padding: 4px;
+    border-radius: 8px;
+    border: 6px solid hsl(0, 0%, 12%);
     position: relative;
+
+    &--all-actions {
+      background-color: hsl(0, 0%, 16%);
+      box-shadow: 2px 2px 8px -2px hsl(0deg 0% 5%);
+    }
   }
 
   &__action-button {
     margin: 0;
     padding: 0;
-    border: 0;
     height: $size;
     width: $size;
-    background-color: black;
-    color: white;
+    transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+      transform: translateX(-1px) translateY(-1px);
+      box-shadow: 2px 2px 8px -4px hsl(0, 0%, 75%);
+    }
   }
 
   &__action-image {

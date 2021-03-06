@@ -26,8 +26,9 @@
             <building-list
               @selected="building => (selected = building)"
               :selected="selected"
-              :completed-buildings="buildOrder.completedBuildings"
               :buildings="buildOrder.buildings"
+              :inprogress-buildings="buildOrder.inprogressBuildings"
+              :completed-buildings="buildOrder.completedBuildings"
             />
           </div>
         </div>
@@ -38,6 +39,7 @@
               @selected="unit => (selected = unit)"
               :selected="selected"
               :units="buildOrder.units"
+              :inprogress-units="buildOrder.inprogressUnits"
               :completed-units="buildOrder.completedUnits"
             />
           </div>
@@ -78,18 +80,11 @@
     </div>
     <div class="row">
       <div class="col">
-        <h2>Game Time</h2>
-        <input
-          style="width: 100%;"
-          @input="onTickChange"
-          type="range"
-          id="ticks"
-          name="ticks"
-          min="0"
-          max="600"
-          :value="tick"
+        <timeline
+          :actions="buildOrder.actions"
+          :tick="tick"
+          :change-tick-fn="changeTick"
         />
-        <span>{{ tick }}</span>
       </div>
     </div>
     <div class="row">
@@ -114,10 +109,11 @@ import BuildOrder from "../lib/BuildOrder"
 import Orc from "../lib/Orc"
 
 import ActionList from "./ActionList.vue"
+import BuildingActions from "./BuildingActions.vue"
 import BuildingList from "./BuildingList.vue"
 import CompletedUpgrades from "./CompletedUpgrades.vue"
 import ResourceDisplay from "./ResourceDisplay.vue"
-import BuildingActions from "./BuildingActions.vue"
+import Timeline from "./Timeline.vue"
 import UnitList from "./UnitList.vue"
 import WorkerActions from "./WorkerActions.vue"
 
@@ -129,6 +125,7 @@ export default {
     BuildingList,
     CompletedUpgrades,
     ResourceDisplay,
+    Timeline,
     UnitList,
     WorkerActions,
   },
@@ -201,3 +198,35 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.fade-in {
+  animation: fadeIn 500ms ease-in forwards;
+}
+
+.fade-in-quick {
+  animation: fadeIn 200ms ease-in forwards;
+}
+
+.fade-in-disabled {
+  animation: fadeInDisabled 400ms ease-in forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDisabled {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+</style>

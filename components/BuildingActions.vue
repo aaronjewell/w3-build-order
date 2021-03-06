@@ -1,5 +1,5 @@
 <template>
-  <div class="training">
+  <div class="training fade-in-quick">
     <div class="training__units d-flex flex-wrap">
       <button
         v-for="unitOrUpgrade in availableActions"

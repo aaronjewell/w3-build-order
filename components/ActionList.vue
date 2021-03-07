@@ -80,7 +80,7 @@ export default {
         case "assignToGold":
           return "common/chestofgold.png"
         case "assignToLumber":
-          return "common/lumber"
+          return "common/lumber.png"
         case "upgrade":
           return action.meta.upgrade.image
       }

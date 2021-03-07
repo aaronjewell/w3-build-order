@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 pb-5 d-flex align-items-center">
+  <div class="pt-3 pb-5 d-flex align-items-center">
     <button :disabled="tick <= 0" @click.prevent="changeTickFn(tick - 1)">
       <i class="fas fa-step-backward"></i>
     </button>

@@ -1,25 +1,42 @@
 <template>
   <div class="resource-display d-flex text-light py-2">
-    <span class="mr-auto d-flex justify-center"
-      ><i class="far fa-clock"></i>&nbsp;{{ formatTime(gameTime) }}</span
-    >
-    <span
-      ><img class="resource-display__icon" src="images/common/icongold.gif" />{{
+    <div class="mr-auto d-flex justify-center">
+      <span
+        ><i class="far fa-clock"></i>&nbsp;<span
+          style="font-family: monospace; font-size: 1.125rem"
+          >{{ formatTime(gameTime) }}</span
+        ></span
+      >
+      <span
+        :class="{ 'text-success': isPlaying }"
+        @click="playFn"
+        style="font-size: 1.125rem"
+        class="ml-3"
+        ><i class="far fa-play-circle"></i
+      ></span>
+      <span @click="stopFn" style="font-size: 1.125rem" class="ml-2"
+        ><i class="far fa-stop-circle"></i
+      ></span>
+    </div>
+    <div class="mr-3">Miners: {{ miningWorkers }}</div>
+    <div class="mr-5">Harvesters: {{ harvestingWorkers }}</div>
+    <div>
+      <img class="resource-display__icon" src="images/common/icongold.gif" />{{
         ` ${gold}`
-      }}</span
-    >
-    <span
-      ><img
+      }}
+    </div>
+    <div>
+      <img
         class="resource-display__icon"
         src="images/common/iconlumber.gif"
-      />{{ ` ${lumber}` }}</span
-    >
-    <span
-      ><img
+      />{{ ` ${lumber}` }}
+    </div>
+    <div>
+      <img
         class="resource-display__icon"
         src="images/common/iconsupply.gif"
-      />{{ ` ${supplyUsed}/${supplyTotal}` }}</span
-    >
+      />{{ ` ${supplyUsed}/${supplyTotal}` }}
+    </div>
   </div>
 </template>
 
@@ -41,8 +58,23 @@ export default {
     supplyTotal: {
       default: 0,
     },
+    miningWorkers: {
+      default: 0,
+    },
+    harvestingWorkers: {
+      default: 0,
+    },
     gameTime: {
       default: 0,
+    },
+    playFn: {
+      required: true,
+    },
+    stopFn: {
+      required: true,
+    },
+    isPlaying: {
+      required: true,
     },
   },
   methods: {

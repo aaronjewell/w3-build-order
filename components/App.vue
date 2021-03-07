@@ -9,7 +9,12 @@
               :lumber="buildOrder.lumber"
               :supply-used="buildOrder.totalSupply - buildOrder.supply"
               :supply-total="buildOrder.totalSupply"
+              :miningWorkers="buildOrder.miningWorkers"
+              :harvestingWorkers="buildOrder.harvestingWorkers"
               :game-time="tick"
+              :play-fn="play"
+              :stop-fn="stop"
+              :is-playing="isPlaying"
             />
           </div>
         </div>
@@ -151,6 +156,7 @@ export default {
     race: null,
     buildOrder: null,
     selected: null,
+    playInterval: null,
   }),
   created() {
     this.race = Orc
@@ -187,6 +193,9 @@ export default {
         this.selected.type === "building" &&
         this.buildOrder.allBuildingActions(this.selected)
     },
+    isPlaying() {
+      return !!this.playInterval
+    },
   },
   methods: {
     changeTick(value) {
@@ -212,6 +221,17 @@ export default {
     },
     removeAction(action) {
       this.buildOrder.removeAction(action)
+    },
+    stop() {
+      if (this.playInterval) {
+        clearInterval(this.playInterval)
+        this.playInterval = null
+      }
+    },
+    play() {
+      this.playInterval = setInterval(() => {
+        this.tick++
+      }, 1000)
     },
   },
 }

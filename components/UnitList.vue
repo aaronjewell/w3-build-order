@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="units d-flex list-unstyled position-relative">
+    <ul class="units d-flex flex-wrap list-unstyled position-relative">
       <li
         class="units__item position-relative"
         v-for="unit in sortedCompletedUnits"
@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$size: 64px;
+$size: 32px;
 
 .units {
   &__item {

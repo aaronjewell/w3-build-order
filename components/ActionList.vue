@@ -2,34 +2,37 @@
   <div>
     <ul class="action__list list-unstyled">
       <li
-        class="mb-3 py-2 px-0"
+        class="mb-2 py-1 px-0"
         :class="{ 'bg-danger': !action.valid }"
         v-for="action in actions"
         :key="action.id"
       >
         <div class="w-100 d-flex align-items-center">
           <span>{{ formatTime(action.start) }}</span
-          >&nbsp;<span>{{ label(action) }}</span
+          >&nbsp;<img
+            class="action__image"
+            :src="`images/${image(action)}`"
+          /><span>{{ label(action) }}</span
           >&nbsp;<span v-if="action.error">{{ action.error }}</span>
           <button
             class="btn btn-primary ml-auto mr-2"
             @click.prevent="changeTickFn(action.start)"
           >
-            Go To Start
+            <i class="fas fa-fast-backward"></i>
           </button>
           <button
             class="btn btn-primary mr-2"
             :class="{ invisible: action.duration === 0 }"
             @click.prevent="changeTickFn(action.start + action.duration)"
           >
-            Go To Finish
+            <i class="fas fa-fast-forward"></i>
           </button>
           <button
             class="btn btn-danger"
             :aria-label="`Remove ${action.name} action`"
             @click.prevent="removeActionFn(action)"
           >
-            Remove
+            <i class="fas fa-trash"></i>
           </button>
         </div>
       </li>
@@ -68,13 +71,35 @@ export default {
           return `Research ${action.meta.upgrade.name}`
       }
     },
+    image(action) {
+      switch (action.type) {
+        case "build":
+          return action.meta.building.image
+        case "train":
+          return action.meta.unit.image
+        case "assignToGold":
+          return "common/chestofgold.png"
+        case "assignToLumber":
+          return "common/lumber"
+        case "upgrade":
+          return action.meta.upgrade.image
+      }
+    },
     formatTime,
   },
 }
 </script>
 
 <style lang="scss">
+$size: 32px;
+
 .action {
+  &__image {
+    margin-left: 8px;
+    margin-right: 8px;
+    width: $size;
+    height: $size;
+  }
   &--invalid {
     background-color: tomato;
   }

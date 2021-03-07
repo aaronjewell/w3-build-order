@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "CompletedUpgrades",
+  name: "UpgradeList",
   props: {
     completedUpgrades: {
       required: true,

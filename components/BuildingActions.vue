@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss">
-$size: 64px;
+$size: 48px;
 
 .training {
   display: flex;

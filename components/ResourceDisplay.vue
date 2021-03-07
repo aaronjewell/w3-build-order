@@ -1,5 +1,8 @@
 <template>
-  <div class="resource-display">
+  <div class="resource-display d-flex text-light py-2">
+    <span class="mr-auto d-flex justify-center"
+      ><i class="far fa-clock"></i>&nbsp;{{ formatTime(gameTime) }}</span
+    >
     <span
       ><img class="resource-display__icon" src="images/common/icongold.gif" />{{
         ` ${gold}`
@@ -21,6 +24,8 @@
 </template>
 
 <script>
+import { formatTime } from "../utils/time"
+
 export default {
   name: "ResourceDisplay",
   props: {
@@ -36,15 +41,18 @@ export default {
     supplyTotal: {
       default: 0,
     },
+    gameTime: {
+      default: 0,
+    },
+  },
+  methods: {
+    formatTime,
   },
 }
 </script>
 
 <style lang="scss">
 .resource-display {
-  display: flex;
-  background-color: black;
-  color: white;
   align-items: center;
 
   & > * {

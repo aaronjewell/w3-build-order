@@ -1,6 +1,6 @@
 <template>
   <div class="buildings">
-    <ul class="d-flex list-unstyled position-relative">
+    <ul class="d-flex flex-wrap list-unstyled position-relative">
       <li
         class="buildings__item position-relative"
         v-for="building in sortedCompletedBuildings"
@@ -102,7 +102,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$size: 64px;
+$size: 48px;
 
 .buildings {
   &__item {

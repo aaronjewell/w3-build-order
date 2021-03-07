@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 pb-5 d-flex align-items-center">
     <button :disabled="tick <= 0" @click.prevent="changeTickFn(tick - 1)">
-      &laquo;
+      <i class="fas fa-step-backward"></i>
     </button>
     <div class="w-100 px-3">
       <vue-slider
@@ -14,7 +14,7 @@
       ></vue-slider>
     </div>
     <button :disabled="tick >= max" @click.prevent="changeTickFn(tick + 1)">
-      &raquo;
+      <i class="fas fa-step-forward"></i>
     </button>
   </div>
 </template>

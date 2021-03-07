@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$size: 64px;
+$size: 48px;
 
 .upgrades {
   &__image {

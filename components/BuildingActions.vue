@@ -2,16 +2,13 @@
   <div class="training fade-in-quick">
     <div class="training__units d-flex flex-wrap">
       <button
-        v-for="unitOrUpgrade in availableActions"
-        :key="unitOrUpgrade.id"
-        @click.prevent="doAction(unitOrUpgrade, building)"
+        v-for="action in availableActions"
+        :key="action.id"
+        @click.prevent="doAction(action, building)"
         class="training__button"
-        :title="`Train ${unitOrUpgrade.name}`"
+        :title="`Train ${action.name}`"
       >
-        <img
-          class="training__unit-image"
-          :src="`images/${unitOrUpgrade.image}`"
-        />
+        <img class="training__unit-image" :src="`images/${action.image}`" />
       </button>
     </div>
   </div>
@@ -28,21 +25,29 @@ export default {
       required: true,
     },
     building: {
-      require: true,
+      required: true,
+    },
+    buyFn: {
+      required: true,
     },
     trainFn: {
-      require: true,
+      required: true,
     },
     upgradeFn: {
-      require: true,
+      required: true,
     },
   },
   methods: {
-    doAction(unitOrUpgrade) {
+    doAction(entity) {
       this.$emit("action")
-      return unitOrUpgrade.type === "unit"
-        ? this.trainFn(unitOrUpgrade, this.building)
-        : this.upgradeFn(unitOrUpgrade, this.building)
+      switch (entity.type) {
+        case "unit":
+          return this.trainFn(entity, this.building)
+        case "upgrade":
+          return this.upgradeFn(entity, this.building)
+        case "item":
+          return this.buyFn(entity, this.building)
+      }
     },
   },
 }

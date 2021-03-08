@@ -11,6 +11,7 @@ export default [
     order: 6,
     units: ["bladeMaster", "farSeer", "shadowHunter", "taurenChieftain"],
     upgrades: [],
+    items: [],
     image: "orc/altarofstorms.png",
   },
   {
@@ -25,6 +26,7 @@ export default [
     order: 2,
     units: ["grunt"],
     upgrades: ["trollRegeneration", "berserkerUpgrade", "burningOil"],
+    items: [],
     image: "orc/barracks.png",
   },
   {
@@ -39,6 +41,7 @@ export default [
     order: 8,
     units: [],
     upgrades: ["ensnare", "envenomedSpears", "liquidFire"],
+    items: [],
     image: "orc/beastiary.png",
   },
   {
@@ -54,6 +57,7 @@ export default [
     order: 1,
     units: ["peon"],
     upgrades: ["pillage", "unitInventory", "stronghold", "fortress"],
+    items: [],
     image: "orc/greathall.png",
   },
   {
@@ -68,6 +72,7 @@ export default [
     order: 5,
     units: [],
     upgrades: [],
+    items: [],
     image: "orc/orcburrow.png",
   },
   {
@@ -87,6 +92,7 @@ export default [
       "witchDoctorAdeptTraining",
       "witchDoctorMasterTraining",
     ],
+    items: [],
     image: "orc/spiritlodge.png",
   },
   {
@@ -105,6 +111,7 @@ export default [
       "spiritWalkerMasterTraining",
       "pulverizeDamageIncrease",
     ],
+    items: [],
     image: "orc/taurentotem.png",
   },
   {
@@ -119,6 +126,16 @@ export default [
     order: 10,
     units: [],
     upgrades: [],
+    items: [
+      "healingSalve",
+      "lesserClarityPotion",
+      "orbOfLightning",
+      "potionOfHealing",
+      "potionOfMana",
+      "scrollOfSpeed",
+      "scrollOfTownPortal",
+      "tinyGreatHall",
+    ],
     image: "orc/voodoolounge.png",
   },
   {
@@ -143,6 +160,7 @@ export default [
       "thoriumRangedWeapons",
       "arcaniteRangedWeapons",
     ],
+    items: [],
     image: "orc/warmill.png",
   },
   {
@@ -157,6 +175,7 @@ export default [
     order: 4,
     units: [],
     upgrades: [],
+    items: [],
     image: "orc/watchtower.png",
   },
 ]

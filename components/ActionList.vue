@@ -69,6 +69,8 @@ export default {
           return "Assign worker to lumber"
         case "upgrade":
           return `Research ${action.meta.upgrade.name}`
+        case "buy":
+          return `Purchase ${action.meta.item.name}`
       }
     },
     image(action) {
@@ -83,6 +85,8 @@ export default {
           return "common/lumber.png"
         case "upgrade":
           return action.meta.upgrade.image
+        case "buy":
+          return action.meta.item.image
       }
     },
     formatTime,

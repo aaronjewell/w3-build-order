@@ -65,7 +65,17 @@
                   <div class="col">
                     <section class="w3bo-section">
                       <h2 class="w3bo-section-heading">Upgrades</h2>
-                      <upgrade-list :completed-upgrades="buildOrder.upgrades" />
+                      <upgrade-list
+                        :completed-upgrades="buildOrder.completedUpgrades"
+                      />
+                    </section>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <section class="w3bo-section">
+                      <h2 class="w3bo-section-heading">Items</h2>
+                      <item-list :purchased-items="buildOrder.purchasedItems" />
                     </section>
                   </div>
                 </div>
@@ -89,14 +99,18 @@
                   <div class="col">
                     <building-actions
                       v-if="
-                        availableUnitsToBuild || availableUpgradesToResearch
+                        availableUnitsToBuild ||
+                          availableUpgradesToResearch ||
+                          availableItemsToBuy
                       "
                       :building="selected"
+                      :buy-fn="buy"
                       :train-fn="train"
                       :upgrade-fn="upgrade"
                       @action="() => (selected = null)"
                       :all-actions="buildOrder.allBuildingActions"
                       :available-actions="[
+                        ...availableItemsToBuy,
                         ...availableUnitsToBuild,
                         ...availableUpgradesToResearch,
                       ]"
@@ -134,10 +148,11 @@ import Orc from "../lib/Orc"
 import ActionList from "./ActionList.vue"
 import BuildingActions from "./BuildingActions.vue"
 import BuildingList from "./BuildingList.vue"
-import UpgradeList from "./UpgradeList.vue"
+import ItemList from "./ItemList.vue"
 import ResourceDisplay from "./ResourceDisplay.vue"
 import Timeline from "./Timeline.vue"
 import UnitList from "./UnitList.vue"
+import UpgradeList from "./UpgradeList.vue"
 import WorkerActions from "./WorkerActions.vue"
 
 export default {
@@ -146,10 +161,11 @@ export default {
     ActionList,
     BuildingActions,
     BuildingList,
-    UpgradeList,
+    ItemList,
     ResourceDisplay,
     Timeline,
     UnitList,
+    UpgradeList,
     WorkerActions,
   },
   data: () => ({
@@ -170,6 +186,14 @@ export default {
       set: function(value) {
         this.buildOrder.tick = value
       },
+    },
+    availableItemsToBuy() {
+      return (
+        this.selected &&
+        this.selected.type &&
+        this.selected.type === "building" &&
+        this.buildOrder.availableItemsForBuilding(this.selected)
+      )
     },
     availableUnitsToBuild() {
       return (
@@ -206,6 +230,9 @@ export default {
     },
     build(building, worker) {
       this.buildOrder.build(building, worker)
+    },
+    buy(item, building) {
+      this.buildOrder.buy(item, building)
     },
     train(unit, building) {
       this.buildOrder.train(unit, building)

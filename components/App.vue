@@ -88,7 +88,7 @@
                       :build-fn="build"
                       :unit="selected"
                       :all-buildings="buildOrder.allBuildings"
-                      :available-buildings="buildOrder.availableBuildings"
+                      :buildable-buildings="buildOrder.availableBuildings()"
                       :assign-to-gold-fn="assignToGold"
                       :assign-to-lumber-fn="assignToLumber"
                       @action="() => (selected = null)"

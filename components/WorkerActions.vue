@@ -82,7 +82,7 @@ export default {
     allBuildings: {
       required: true,
     },
-    availableBuildings: {
+    buildableBuildings: {
       required: true,
     },
     unit: {

@@ -79,6 +79,19 @@
                     </section>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col">
+                    <section class="w3bo-section">
+                      <h2 class="w3bo-section-heading">Neutral Buildings</h2>
+                      <building-list
+                        @selected="building => (selected = building)"
+                        :selected="selected"
+                        :buildings="buildOrder.neutralBuildings"
+                        :completed-buildings="buildOrder.neutralBuildings"
+                      />
+                    </section>
+                  </div>
+                </div>
               </div>
               <div class="col-6">
                 <div class="row">

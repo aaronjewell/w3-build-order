@@ -75,7 +75,7 @@ export default {
       required: true,
     },
     inprogressBuildings: {
-      required: true,
+      default: () => [],
     },
     selected: {
       required: true,
@@ -88,12 +88,16 @@ export default {
   },
   methods: {
     availableBuilding(completed) {
-      return this.buildings.find(b => b._id === completed._id)
+      return (
+        this.buildings.find(b => b._id === completed._id) ||
+        typeof completed.buildTime === "undefined"
+      )
     },
     isSelected(building) {
       return (
         this.selected &&
         this.selected.type === building.type &&
+        this.selected.id === building.id &&
         this.selected._id === building._id
       )
     },

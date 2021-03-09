@@ -29,7 +29,7 @@
           'grid-row': row(building),
           'grid-column': column(building),
         }"
-        v-for="building in availableBuildings"
+        v-for="building in buildableBuildings"
         :key="building.id"
         @click.prevent="build(building, unit)"
         class="unit__action-button"

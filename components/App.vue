@@ -121,7 +121,7 @@
                       :train-fn="train"
                       :upgrade-fn="upgrade"
                       @action="() => (selected = null)"
-                      :all-actions="buildOrder.allBuildingActions"
+                      :all-actions="buildOrder.allBuildingActions(selected)"
                       :available-actions="[
                         ...availableItemsToBuy,
                         ...availableUnitsToBuild,

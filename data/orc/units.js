@@ -21,6 +21,7 @@ export default [
     lumber: 0,
     supply: 3,
     buildTime: 30,
+    order: 1,
     image: "orc/grunt.png",
   },
   {
@@ -31,6 +32,7 @@ export default [
     lumber: 20,
     supply: 2,
     buildTime: 20,
+    order: 2,
     image: "orc/headhunter.png",
   },
   {
@@ -41,6 +43,7 @@ export default [
     lumber: 50,
     supply: 4,
     buildTime: 40,
+    order: 3,
     image: "orc/demolisher.png",
   },
   {
@@ -51,6 +54,7 @@ export default [
     lumber: 20,
     supply: 2,
     buildTime: 30,
+    order: 1,
     image: "orc/shaman.png",
   },
   {
@@ -61,6 +65,7 @@ export default [
     lumber: 25,
     supply: 2,
     buildTime: 30,
+    order: 2,
     image: "orc/witchdoctor.png",
   },
   {
@@ -71,6 +76,7 @@ export default [
     lumber: 40,
     supply: 3,
     buildTime: 28,
+    order: 1,
     image: "orc/wolfrider.png",
   },
   {
@@ -81,6 +87,7 @@ export default [
     lumber: 60,
     supply: 4,
     buildTime: 30,
+    order: 3,
     image: "orc/kodobeast.png",
   },
   {
@@ -91,6 +98,7 @@ export default [
     lumber: 40,
     supply: 4,
     buildTime: 35,
+    order: 2,
     image: "orc/wyvernrider.png",
   },
   {
@@ -101,6 +109,7 @@ export default [
     lumber: 40,
     supply: 2,
     buildTime: 28,
+    orer: 4,
     image: "orc/batrider.png",
   },
   {
@@ -111,6 +120,7 @@ export default [
     lumber: 80,
     supply: 5,
     buildTime: 44,
+    order: 2,
     image: "orc/tauren.png",
   },
   {
@@ -123,6 +133,7 @@ export default [
     buildTime: 55,
     limit: 1,
     isHero: true,
+    order: 9,
     image: "orc/blademaster.png",
   },
   {
@@ -135,6 +146,7 @@ export default [
     buildTime: 55,
     limit: 1,
     isHero: true,
+    order: 10,
     image: "orc/farseer.png",
   },
   {
@@ -147,6 +159,7 @@ export default [
     buildTime: 55,
     limit: 1,
     isHero: true,
+    order: 11,
     image: "orc/chieftain.png",
   },
   {
@@ -159,6 +172,7 @@ export default [
     buildTime: 55,
     limit: 1,
     isHero: true,
+    order: 5,
     image: "orc/shadowhunter.png",
   },
 ]

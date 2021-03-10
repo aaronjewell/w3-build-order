@@ -11,6 +11,7 @@ export default [
       buildings: ["greatHall"],
       upgrades: [],
     },
+    order: 9,
     image: "orc/stronghold.png",
   },
   {
@@ -26,6 +27,7 @@ export default [
       buildings: ["greatHall"],
       upgrades: [],
     },
+    order: 9,
     image: "orc/fortress.png",
   },
   {
@@ -39,6 +41,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 11,
     image: "orc/spikedbarricades.png",
   },
   {
@@ -53,6 +56,7 @@ export default [
       buildings: [],
       upgrades: ["stronghold"],
     },
+    order: 11,
     image: "orc/improvedspikedbarricades.png",
   },
   {
@@ -66,6 +70,7 @@ export default [
       buildings: [],
       upgrades: ["stronghold"],
     },
+    order: 7,
     image: "orc/reinforceddefenses.png",
   },
   {
@@ -79,6 +84,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 1,
     image: "orc/steelmeleeweapons.png",
   },
   {
@@ -93,6 +99,7 @@ export default [
       buildings: [],
       upgrades: ["stronghold"],
     },
+    order: 1,
     image: "orc/thoriummeleeweapons.png",
   },
   {
@@ -107,6 +114,7 @@ export default [
       buildings: [],
       upgrades: ["fortress"],
     },
+    order: 1,
     image: "orc/arcanitemeleeweapons.png",
   },
   {
@@ -120,6 +128,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 2,
     image: "orc/steelrangedweapons.png",
   },
   {
@@ -134,6 +143,7 @@ export default [
       buildings: [],
       upgrades: ["stronghold"],
     },
+    order: 2,
     image: "orc/thoriumrangedweapons.png",
   },
   {
@@ -148,6 +158,7 @@ export default [
       buildings: [],
       upgrades: ["fortress"],
     },
+    order: 2,
     image: "orc/arcaniterangedweapons.png",
   },
   {
@@ -161,6 +172,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 5,
     image: "orc/steelarmor.png",
   },
   {
@@ -175,6 +187,7 @@ export default [
       buildings: [],
       upgrades: ["stronghold"],
     },
+    order: 5,
     image: "orc/thoriumarmor.png",
   },
   {
@@ -189,6 +202,7 @@ export default [
       buildings: [],
       upgrades: ["fortress"],
     },
+    order: 5,
     image: "orc/arcanitearmor.png",
   },
   {
@@ -202,6 +216,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 9,
     image: "orc/shamanadepttraining.png",
   },
   {
@@ -216,6 +231,7 @@ export default [
       buildings: [],
       upgrades: ["fortress"],
     },
+    order: 9,
     image: "orc/shamanmastertraining.png",
   },
   {
@@ -229,6 +245,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 10,
     image: "orc/witchdoctoradepttraining.png",
   },
   {
@@ -243,6 +260,7 @@ export default [
       buildings: [],
       upgrades: ["fortress"],
     },
+    order: 10,
     image: "orc/witchdoctormastertraining.png",
   },
   {
@@ -256,6 +274,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 9,
     image: "orc/spiritwalkeradepttraining.png",
   },
   {
@@ -270,6 +289,7 @@ export default [
       buildings: [],
       upgrades: ["fortress"],
     },
+    order: 9,
     image: "orc/spiritwalkermastertraining.png",
   },
   {
@@ -297,6 +317,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 9,
     image: "orc/brutestrength.png",
   },
   {
@@ -324,6 +345,7 @@ export default [
       buildings: ["warMill"],
       upgrades: ["stronghold"],
     },
+    order: 10,
     image: "orc/trollregeneration.png",
   },
   {
@@ -337,6 +359,7 @@ export default [
       buildings: ["warMill"],
       upgrades: ["fortress"],
     },
+    order: 6,
     image: "orc/berserkerupgrade.png",
   },
   {
@@ -350,6 +373,7 @@ export default [
       buildings: [],
       upgrades: ["fortress"],
     },
+    order: 7,
     image: "orc/burningoil.gif",
   },
   {
@@ -363,6 +387,7 @@ export default [
       buildings: [],
       upgrades: [],
     },
+    order: 9,
     image: "orc/ensnare.gif",
   },
   {
@@ -376,6 +401,7 @@ export default [
       buildings: [],
       upgrades: ["fortress"],
     },
+    order: 10,
     image: "orc/envenomedspears.gif",
   },
   {
@@ -389,6 +415,7 @@ export default [
       buildings: ["warMill"],
       upgrades: ["fortress"],
     },
+    order: 11,
     image: "orc/wardrumsdamageincrease.png",
   },
   {
@@ -402,6 +429,7 @@ export default [
       buildings: ["voodooLounge"],
       upgrades: ["fortress"],
     },
+    order: 7,
     image: "orc/liquidfire.gif",
   },
   {
@@ -415,6 +443,7 @@ export default [
       buildings: ["warMill"],
       upgrades: ["fortress"],
     },
+    order: 10,
     image: "orc/pulverizedamageincrease.png",
   },
 ]

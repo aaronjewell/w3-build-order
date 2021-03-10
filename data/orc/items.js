@@ -8,6 +8,7 @@ export default [
     max: 2,
     replenish: 60,
     dependsOn: [],
+    order: 1,
     image: "orc/healingsalve.png",
   },
   {
@@ -19,6 +20,7 @@ export default [
     max: 2,
     replenish: 30,
     dependsOn: [],
+    ordeR: 2,
     image: "orc/lesserclaritypotion.png",
   },
   {
@@ -30,6 +32,7 @@ export default [
     max: 1,
     replenish: 120,
     dependsOn: ["fortress"],
+    order: 9,
     image: "orc/orboflightning.png",
   },
   {
@@ -41,6 +44,7 @@ export default [
     max: 3,
     replenish: 120,
     dependsOn: ["stronghold"],
+    order: 5,
     image: "orc/potionofhealing.png",
   },
   {
@@ -52,6 +56,7 @@ export default [
     max: 2,
     replenish: 120,
     dependsOn: ["stronghold"],
+    order: 6,
     image: "orc/potionofmana.png",
   },
   {
@@ -63,6 +68,7 @@ export default [
     max: 1,
     replenish: 60,
     dependsOn: [],
+    order: 3,
     image: "orc/scrollofspeed.png",
   },
   {
@@ -74,6 +80,7 @@ export default [
     max: 2,
     replenish: 120,
     dependsOn: ["stronghold"],
+    order: 7,
     image: "orc/scrolloftownportal.png",
   },
   {
@@ -85,6 +92,7 @@ export default [
     max: 1,
     replenish: 120,
     dependsOn: ["fortress"],
+    order: 10,
     image: "orc/greathall.png",
   },
 ]

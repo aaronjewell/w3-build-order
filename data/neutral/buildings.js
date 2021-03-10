@@ -11,7 +11,7 @@ export default [
       "dustOfAppearance",
       "scrollOfHealing",
       "scrollOfProtection",
-      "scrollOfTownPortal",
+      "scrollOfTownPortalNeutral",
       "potionOfInvisibility",
       "tomeOfRetraining",
       "staffOfTeleportation",

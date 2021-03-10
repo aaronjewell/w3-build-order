@@ -1,5 +1,5 @@
 <template>
-  <div class="position-relative fade-in-quick d-inline-block">
+  <div class="position-relative fade-in-quick">
     <div
       class="unit__actions position-absolute unit__actions--all-actions"
       v-if="miner || harvester || buildingActions.length"
@@ -136,7 +136,7 @@ $size: 48px;
   }
 
   &__actions {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: $size $size $size $size;
     grid-template-rows: $size $size $size;
     grid-gap: 4px;

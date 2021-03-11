@@ -69,6 +69,7 @@ export default {
       this.$emit("action")
       switch (entity.type) {
         case "unit":
+        case "neutralUnit":
           return this.trainFn(entity, this.building)
         case "upgrade":
           return this.upgradeFn(entity, this.building)

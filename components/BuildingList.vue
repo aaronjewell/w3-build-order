@@ -38,7 +38,7 @@
       </li>
       <li
         v-for="inprogress in inprogressBuildings"
-        :key="inprogress.inprogressId"
+        :key="`${inprogress.inprogressId}-inprogress`"
         class="buildings__item position-relative"
       >
         <div class="building fade-in-disabled">

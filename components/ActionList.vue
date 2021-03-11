@@ -65,8 +65,12 @@ export default {
           return `Train ${action.meta.unit.name}`
         case "assignToGold":
           return "Assign worker to gold mine"
+        case "removeFromGold":
+          return "Remove worker from gold mine"
         case "assignToLumber":
           return "Assign worker to lumber"
+        case "removeFromLumber":
+          return "Remove worker from gold mine"
         case "upgrade":
           return `Research ${action.meta.upgrade.name}`
         case "buy":
@@ -80,8 +84,10 @@ export default {
         case "train":
           return action.meta.unit.image
         case "assignToGold":
+        case "removeFromGold":
           return "common/chestofgold.png"
         case "assignToLumber":
+        case "removeFromLumber":
           return "common/lumber.png"
         case "upgrade":
           return action.meta.upgrade.image

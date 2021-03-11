@@ -15,6 +15,8 @@
               :play-fn="play"
               :stop-fn="stop"
               :is-playing="isPlaying"
+              :remove-miner-fn="removeFromGold"
+              :remove-harvester-fn="removeFromLumber"
             />
           </div>
         </div>
@@ -256,8 +258,14 @@ export default {
     assignToGold(worker) {
       this.buildOrder.assignToGold(worker)
     },
+    removeFromGold() {
+      this.buildOrder.removeFromGold()
+    },
     assignToLumber(worker) {
       this.buildOrder.assignToLumber(worker)
+    },
+    removeFromLumber() {
+      this.buildOrder.removeFromLumber()
     },
     removeAction(action) {
       this.buildOrder.removeAction(action)

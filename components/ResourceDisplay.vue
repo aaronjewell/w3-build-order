@@ -18,8 +18,26 @@
         ><i class="far fa-stop-circle"></i
       ></span>
     </div>
-    <div class="mr-3">Miners: {{ miningWorkers }}</div>
-    <div class="mr-5">Harvesters: {{ harvestingWorkers }}</div>
+    <div class="mr-3">
+      Miners: {{ miningWorkers.length || 0
+      }}<button
+        @click.prevent="removeMinerFn"
+        v-if="miningWorkers.length"
+        class="ml-2 btn btn-sm btn-outline-secondary"
+      >
+        Remove
+      </button>
+    </div>
+    <div class="mr-5">
+      Harvesters: {{ harvestingWorkers.length || 0
+      }}<button
+        @click.prevent="removeHarvesterFn"
+        v-if="harvestingWorkers.length"
+        class="ml-2 btn btn-sm btn-outline-secondary"
+      >
+        Remove
+      </button>
+    </div>
     <div>
       <img class="resource-display__icon" src="images/common/icongold.gif" />{{
         ` ${gold}`
@@ -74,6 +92,12 @@ export default {
       required: true,
     },
     isPlaying: {
+      required: true,
+    },
+    removeMinerFn: {
+      required: true,
+    },
+    removeHarvesterFn: {
       required: true,
     },
   },

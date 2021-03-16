@@ -17,7 +17,7 @@
           </div>
         </button>
         <button
-          class="w3bo-unit w3bo-unit--available w3bo-fade-in"
+          class="w3bo-unit w3bo-unit--available w3bo-fade-in w3bo-btn"
           :style="{ visibility: availableUnit(unit) ? 'visible' : 'hidden' }"
           @click.prevent="() => $emit('selected', unit)"
         >

@@ -1,159 +1,190 @@
 <template>
-  <div class="w3bo-container">
-    <section class="w3bo-card">
-      <div
-        class="w3bo-container w3bo-bg-contrast-higher w3bo-fg-contrast-higher"
-      >
-        <div class="w3bo-row">
-          <div class="w3bo-col">
-            <resource-display
-              :gold="buildOrder.gold"
-              :lumber="buildOrder.lumber"
-              :supply-used="buildOrder.totalSupply - buildOrder.supply"
-              :supply-total="buildOrder.totalSupply"
-              :miningWorkers="buildOrder.miningWorkers"
-              :harvestingWorkers="buildOrder.harvestingWorkers"
-              :game-time="tick"
-              :play-fn="play"
-              :stop-fn="stop"
-              :is-playing="isPlaying"
-              :remove-miner-fn="removeFromGold"
-              :remove-harvester-fn="removeFromLumber"
-            />
+  <div class="w3bo">
+    <div class="w3bo-container">
+      <section class="w3bo-card">
+        <div
+          class="w3bo-container w3bo-bg-contrast-higher w3bo-fg-contrast-higher"
+        >
+          <div class="w3bo-row">
+            <div class="w3bo-col">
+              <resource-display
+                :gold="buildOrder.gold"
+                :lumber="buildOrder.lumber"
+                :supply-used="buildOrder.totalSupply - buildOrder.supply"
+                :supply-total="buildOrder.totalSupply"
+                :miningWorkers="buildOrder.miningWorkers"
+                :harvestingWorkers="buildOrder.harvestingWorkers"
+                :game-time="tick"
+                :play-fn="play"
+                :stop-fn="stop"
+                :is-playing="isPlaying"
+                :remove-miner-fn="removeFromGold"
+                :remove-harvester-fn="removeFromLumber"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="w3bo-container w3bo-bg-contrast-high w3bo-fg-contrast-high">
-        <div class="w3bo-row">
-          <div class="w3bo-col">
-            <timeline
-              :actions="buildOrder.actions"
-              :tick="tick"
-              :change-tick-fn="changeTick"
-            />
+        <div class="w3bo-container w3bo-bg-contrast-high w3bo-fg-contrast-high">
+          <div class="w3bo-row">
+            <div class="w3bo-col">
+              <timeline
+                :actions="buildOrder.actions"
+                :tick="tick"
+                :change-tick-fn="changeTick"
+              />
+            </div>
           </div>
-        </div>
-        <div class="w3bo-row">
-          <div class="w3bo-col-6">
-            <div class="w3bo-row">
-              <div class="w3bo-col-6">
-                <div class="w3bo-row">
-                  <div class="w3bo-col">
-                    <section class="w3bo-section">
-                      <h2 class="w3bo-section-heading">Buildings</h2>
-                      <building-list
-                        @selected="building => (selected = building)"
-                        :selected="selected"
-                        :buildings="buildOrder.buildings"
-                        :inprogress-buildings="buildOrder.inprogressBuildings"
-                        :completed-buildings="buildOrder.completedBuildings"
+          <div class="w3bo-row">
+            <div class="w3bo-col-6">
+              <div class="w3bo-row">
+                <div class="w3bo-col-6">
+                  <div class="w3bo-row">
+                    <div class="w3bo-col">
+                      <section class="w3bo-section">
+                        <h2 class="w3bo-section-heading">Buildings</h2>
+                        <building-list
+                          @selected="building => (selected = building)"
+                          :selected="selected"
+                          :buildings="buildOrder.buildings"
+                          :inprogress-buildings="buildOrder.inprogressBuildings"
+                          :completed-buildings="buildOrder.completedBuildings"
+                        />
+                      </section>
+                    </div>
+                  </div>
+                  <div class="w3bo-row">
+                    <div class="w3bo-col">
+                      <section class="w3bo-section">
+                        <h2 class="w3bo-section-heading">Units</h2>
+                        <unit-list
+                          @selected="unit => (selected = unit)"
+                          :selected="selected"
+                          :units="buildOrder.units"
+                          :inprogress-units="buildOrder.inprogressUnits"
+                          :completed-units="buildOrder.completedUnits"
+                        />
+                      </section>
+                    </div>
+                  </div>
+                  <div class="w3bo-row">
+                    <div class="w3bo-col">
+                      <section class="w3bo-section">
+                        <h2 class="w3bo-section-heading">Upgrades</h2>
+                        <upgrade-list
+                          :completed-upgrades="buildOrder.completedUpgrades"
+                        />
+                      </section>
+                    </div>
+                  </div>
+                  <div class="w3bo-row">
+                    <div class="w3bo-col">
+                      <section class="w3bo-section">
+                        <h2 class="w3bo-section-heading">Items</h2>
+                        <item-list
+                          :purchased-items="buildOrder.purchasedItems"
+                        />
+                      </section>
+                    </div>
+                  </div>
+                  <div class="w3bo-row">
+                    <div class="w3bo-col">
+                      <section class="w3bo-section">
+                        <h2 class="w3bo-section-heading">Neutral Buildings</h2>
+                        <building-list
+                          @selected="building => (selected = building)"
+                          :selected="selected"
+                          :buildings="buildOrder.neutralBuildings"
+                          :completed-buildings="buildOrder.neutralBuildings"
+                        />
+                      </section>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3bo-col-6">
+                  <div class="w3bo-row">
+                    <div class="w3bo-col">
+                      <worker-actions
+                        v-if="selected && selected.canBuild"
+                        :build-fn="build"
+                        :unit="selected"
+                        :all-buildings="buildOrder.allBuildings"
+                        :buildable-buildings="buildOrder.availableBuildings()"
+                        :assign-to-gold-fn="assignToGold"
+                        :assign-to-lumber-fn="assignToLumber"
+                        @action="() => (selected = null)"
                       />
-                    </section>
+                    </div>
                   </div>
-                </div>
-                <div class="w3bo-row">
-                  <div class="w3bo-col">
-                    <section class="w3bo-section">
-                      <h2 class="w3bo-section-heading">Units</h2>
-                      <unit-list
-                        @selected="unit => (selected = unit)"
-                        :selected="selected"
-                        :units="buildOrder.units"
-                        :inprogress-units="buildOrder.inprogressUnits"
-                        :completed-units="buildOrder.completedUnits"
+                  <div class="w3bo-row">
+                    <div class="w3bo-col">
+                      <building-actions
+                        v-if="
+                          availableUnitsToBuild ||
+                            availableUpgradesToResearch ||
+                            availableItemsToBuy
+                        "
+                        :building="selected"
+                        :buy-fn="buy"
+                        :train-fn="train"
+                        :upgrade-fn="upgrade"
+                        @action="() => (selected = null)"
+                        :all-actions="buildOrder.allBuildingActions(selected)"
+                        :available-actions="[
+                          ...availableItemsToBuy,
+                          ...availableUnitsToBuild,
+                          ...availableUpgradesToResearch,
+                        ]"
                       />
-                    </section>
-                  </div>
-                </div>
-                <div class="w3bo-row">
-                  <div class="w3bo-col">
-                    <section class="w3bo-section">
-                      <h2 class="w3bo-section-heading">Upgrades</h2>
-                      <upgrade-list
-                        :completed-upgrades="buildOrder.completedUpgrades"
-                      />
-                    </section>
-                  </div>
-                </div>
-                <div class="w3bo-row">
-                  <div class="w3bo-col">
-                    <section class="w3bo-section">
-                      <h2 class="w3bo-section-heading">Items</h2>
-                      <item-list :purchased-items="buildOrder.purchasedItems" />
-                    </section>
-                  </div>
-                </div>
-                <div class="w3bo-row">
-                  <div class="w3bo-col">
-                    <section class="w3bo-section">
-                      <h2 class="w3bo-section-heading">Neutral Buildings</h2>
-                      <building-list
-                        @selected="building => (selected = building)"
-                        :selected="selected"
-                        :buildings="buildOrder.neutralBuildings"
-                        :completed-buildings="buildOrder.neutralBuildings"
-                      />
-                    </section>
-                  </div>
-                </div>
-              </div>
-              <div class="w3bo-col-6">
-                <div class="w3bo-row">
-                  <div class="w3bo-col">
-                    <worker-actions
-                      v-if="selected && selected.canBuild"
-                      :build-fn="build"
-                      :unit="selected"
-                      :all-buildings="buildOrder.allBuildings"
-                      :buildable-buildings="buildOrder.availableBuildings()"
-                      :assign-to-gold-fn="assignToGold"
-                      :assign-to-lumber-fn="assignToLumber"
-                      @action="() => (selected = null)"
-                    />
-                  </div>
-                </div>
-                <div class="w3bo-row">
-                  <div class="w3bo-col">
-                    <building-actions
-                      v-if="
-                        availableUnitsToBuild ||
-                          availableUpgradesToResearch ||
-                          availableItemsToBuy
-                      "
-                      :building="selected"
-                      :buy-fn="buy"
-                      :train-fn="train"
-                      :upgrade-fn="upgrade"
-                      @action="() => (selected = null)"
-                      :all-actions="buildOrder.allBuildingActions(selected)"
-                      :available-actions="[
-                        ...availableItemsToBuy,
-                        ...availableUnitsToBuild,
-                        ...availableUpgradesToResearch,
-                      ]"
-                    />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="w3bo-col-6">
-            <section>
-              <h2 class="w3bo-section-heading">Plans</h2>
-              <action-list
-                :remove-action-fn="removeAction"
-                :change-tick-fn="changeTick"
-                :actions="buildOrder.actions"
-              ></action-list>
-            </section>
+            <div class="w3bo-col-6">
+              <section>
+                <h2 class="w3bo-section-heading">Plans</h2>
+                <action-list
+                  :remove-action-fn="removeAction"
+                  :change-tick-fn="changeTick"
+                  :actions="buildOrder.actions"
+                ></action-list>
+              </section>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
+import "../styles/index.scss"
+import { dom, library } from "@fortawesome/fontawesome-svg-core"
+import {
+  faFastBackward,
+  faFastForward,
+  faStepBackward,
+  faStepForward,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons"
+
+import {
+  faClock,
+  faPlayCircle,
+  faStopCircle,
+} from "@fortawesome/free-regular-svg-icons"
+
+library.add(
+  faClock,
+  faPlayCircle,
+  faStopCircle,
+  faFastBackward,
+  faFastForward,
+  faStepBackward,
+  faStepForward,
+  faTrash,
+)
+
 import BuildOrder from "../lib/BuildOrder"
 import Orc from "../lib/Orc"
 
@@ -278,6 +309,12 @@ export default {
         this.tick++
       }, 1000)
     },
+  },
+  mounted() {
+    dom.watch({
+      autoReplaceSvgRoot: this.$el,
+      observeMutationsRoot: this.$el,
+    })
   },
 }
 </script>

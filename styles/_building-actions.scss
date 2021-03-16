@@ -12,10 +12,11 @@
     padding: 4px;
     border-radius: 8px;
     border: 6px solid hsl(0, 0%, 12%);
-    position: relative;
+    position: absolute;
 
     &--available {
       z-index: 1;
+      position: relative;
     }
 
     &--all-actions {

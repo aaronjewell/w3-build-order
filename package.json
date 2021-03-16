@@ -10,9 +10,7 @@
     "lint": "prettier-eslint --write --list-different \"$PWD/lib/**/*.js\""
   },
   "sideEffects": [
-    "*.css",
-    "*.scss",
-    "*.vue"
+    "*.scss"
   ],
   "keywords": [],
   "author": "",

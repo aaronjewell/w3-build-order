@@ -1,7 +1,7 @@
 <template>
   <div class="w3bo-worker-actions w3bo-fade-in-quick">
     <div
-      class="w3bo-worker-actions__actions unit__actions--all-actions"
+      class="w3bo-worker-actions__actions w3bo-worker-actions__actions--all-actions"
       v-if="miner || harvester || buildingActions.length"
     >
       <button
@@ -13,7 +13,7 @@
         disabled
         v-for="building in allBuildings"
         :key="building.id"
-        class="w3bo-worker-actions__action-button"
+        class="w3bo-worker-actions__action-button w3bo-btn"
         :title="`${building.name}`"
       >
         <img
@@ -35,7 +35,7 @@
         v-for="building in buildableBuildings"
         :key="building.id"
         @click.prevent="build(building, unit)"
-        class="w3bo-worker-actions__action-button"
+        class="w3bo-worker-actions__action-button w3bo-btn"
         :title="`${building.name}`"
       >
         <img
@@ -48,7 +48,7 @@
           'grid-row': row({ order: 11 }),
           'grid-column': column({ order: 11 }),
         }"
-        class="w3bo-worker-actions__action-button"
+        class="w3bo-worker-actions__action-button w3bo-btn"
         v-if="miner"
         @click.prevent="assignToGold(unit)"
       >
@@ -62,7 +62,7 @@
           'grid-row': row({ order: 12 }),
           'grid-column': column({ order: 12 }),
         }"
-        class="w3bo-worker-actions__action-button"
+        class="w3bo-worker-actions__action-button w3bo-btn"
         v-if="harvester"
         @click.prevent="assignToLumber(unit)"
       >

@@ -1,0 +1,15 @@
+.w3bo {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+  }
+
+  img {
+    vertical-align: middle;
+    border-style: none;
+  }
+}

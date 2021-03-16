@@ -1,5 +1,11 @@
 .w3bo-btn {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  overflow: visible;
   display: inline-block;
+  outline: none;
   font-weight: 400;
   color: #212529;
   text-align: center;
@@ -13,6 +19,16 @@
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  text-transform: none;
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
 
   &--sm {
     padding: 0.25rem 0.5rem;

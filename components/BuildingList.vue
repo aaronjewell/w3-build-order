@@ -1,35 +1,31 @@
 <template>
-  <div class="buildings">
-    <ul class="d-flex flex-wrap list-unstyled position-relative">
+  <div class="w3bo-buildings">
+    <ul class="w3bo-buildings__list w3bo-list-unstyled">
       <li
-        class="buildings__item position-relative"
+        class="w3bo-buildings__item"
         v-for="building in sortedCompletedBuildings"
         :key="building._id"
         :class="{ selected: isSelected(building) }"
       >
-        <div
-          class="building position-absolute fade-in-disabled"
-          style="top: 0; left: 0;"
-        >
-          <div class="building__display">
+        <div class="w3bo-building w3bo-fade-in-disabled">
+          <div class="w3bo-building__display">
             <img
-              class="building__image"
+              class="w3bo-building__image"
               :src="`images/${building.image}`"
               :alt="building.name"
             />
           </div>
         </div>
         <div
-          class="building fade-in position-relative"
-          style="z-index: 1;"
+          class="w3bo-building w3bo-building--available w3bo-fade-in"
           :style="{
             visibility: availableBuilding(building) ? 'visible' : 'hidden',
           }"
           @click="() => $emit('selected', building)"
         >
-          <div class="building__display">
+          <div class="w3bo-building__display">
             <img
-              class="building__image"
+              class="w3bo-building__image"
               :src="`images/${building.image}`"
               :alt="building.name"
             />
@@ -39,12 +35,12 @@
       <li
         v-for="inprogress in inprogressBuildings"
         :key="`${inprogress.inprogressId}-inprogress`"
-        class="buildings__item position-relative"
+        class="w3bo-buildings__item"
       >
-        <div class="building fade-in-disabled">
-          <div class="building__display">
+        <div class="w3bo-building w3bo-fade-in-disabled">
+          <div class="w3bo-building__display">
             <img
-              class="building__image"
+              class="w3bo-building__image"
               :src="`images/${inprogress.unit.image}`"
               :alt="inprogress.unit.name"
             />
@@ -55,9 +51,8 @@
             right: `${((inprogress.end - inprogress.current) /
               (inprogress.end - inprogress.start)) *
               100}%`,
-            transition: 'right 200ms ease-in-out',
           }"
-          class="building__progress-bar"
+          class="w3bo-building__progress-bar"
         ></span>
       </li>
     </ul>
@@ -104,32 +99,3 @@ export default {
   },
 }
 </script>
-
-<style scoped lang="scss">
-$size: 48px;
-
-.buildings {
-  &__item {
-    z-index: 0;
-    &.selected {
-      box-shadow: 0 0 8px 2px hsl(0, 0%, 90%);
-      z-index: 1;
-    }
-  }
-}
-
-.building {
-  &__image {
-    width: $size;
-    height: $size;
-  }
-
-  &__progress-bar {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    background-color: yellow;
-  }
-}
-</style>

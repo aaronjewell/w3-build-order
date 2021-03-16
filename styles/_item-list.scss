@@ -1,0 +1,11 @@
+.w3bo-items {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__image {
+    width: $item-list-icon-size;
+    height: $item-list-icon-size;
+  }
+}

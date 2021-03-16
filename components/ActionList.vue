@@ -1,34 +1,34 @@
 <template>
-  <div>
-    <ul class="action__list list-unstyled">
+  <div class="w3bo-action-list">
+    <ul class="w3bo-action-list__list w3bo-list-unstyled">
       <li
-        class="mb-2 py-1 px-0"
-        :class="{ 'bg-danger': !action.valid }"
+        class="w3bo-action-list__list-item"
+        :class="{ 'w3bo-bg-danger': !action.valid }"
         v-for="action in actions"
         :key="action.id"
       >
-        <div class="w-100 d-flex align-items-center">
+        <div class="w3bo-action">
           <span>{{ formatTime(action.start) }}</span
           >&nbsp;<img
-            class="action__image"
+            class="w3bo-action__image"
             :src="`images/${image(action)}`"
           /><span>{{ label(action) }}</span
           >&nbsp;<span v-if="action.error">{{ action.error }}</span>
           <button
-            class="btn btn-primary ml-auto mr-2"
+            class="w3bo-action__button w3bo-action__button--rewind w3bo-btn w3bo-btn--primary"
             @click.prevent="changeTickFn(action.start)"
           >
             <i class="fas fa-fast-backward"></i>
           </button>
           <button
-            class="btn btn-primary mr-2"
-            :class="{ invisible: action.duration === 0 }"
+            class="w3bo-action__button w3bo-btn w3bo-btn--primary"
+            :class="{ 'w3bo-invisible': action.duration === 0 }"
             @click.prevent="changeTickFn(action.start + action.duration)"
           >
             <i class="fas fa-fast-forward"></i>
           </button>
           <button
-            class="btn btn-danger"
+            class="w3bo-btn w3bo-btn--danger"
             :aria-label="`Remove ${action.name} action`"
             @click.prevent="removeActionFn(action)"
           >
@@ -99,19 +99,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-$size: 32px;
-
-.action {
-  &__image {
-    margin-left: 8px;
-    margin-right: 8px;
-    width: $size;
-    height: $size;
-  }
-  &--invalid {
-    background-color: tomato;
-  }
-}
-</style>

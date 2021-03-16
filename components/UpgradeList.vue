@@ -1,9 +1,9 @@
 <template>
-  <div class="upgrades">
-    <ul class="d-flex flex-wrap list-unstyled">
+  <div class="w3bo-upgrades">
+    <ul class="w3bo-upgrades__list w3bo-list-unstyled">
       <li v-for="upgrade in completedUpgrades" v-bind:key="upgrade._id">
         <img
-          class="upgrades__image"
+          class="w3bo-upgrades__image"
           :src="`images/${upgrade.image}`"
           :alt="upgrade.name"
         />
@@ -22,14 +22,3 @@ export default {
   },
 }
 </script>
-
-<style scoped lang="scss">
-$size: 48px;
-
-.upgrades {
-  &__image {
-    width: $size;
-    height: $size;
-  }
-}
-</style>

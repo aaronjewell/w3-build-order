@@ -1,0 +1,12 @@
+.w3bo-timeline {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5rem;
+    padding-top: 1rem;
+
+    &__slider {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

@@ -1,7 +1,7 @@
 <template>
-  <div class="position-relative fade-in-quick">
+  <div class="position-relative w3bo-fade-in-quick">
     <div
-      class="building__actions position-absolute building__actions--all-actions"
+      class="w3bo-building__actions position-absolute w3bo-building__actions--all-actions"
       v-if="allActions.length"
     >
       <button
@@ -13,16 +13,18 @@
         disabled
         v-for="action in allActions"
         :key="action.id"
-        class="building__action-button"
+        class="w3bo-building__action-button"
         :title="`${action.name}`"
       >
-        <img class="building__action-image" :src="`images/${action.image}`" />
+        <img
+          class="w3bo-building__action-image"
+          :src="`images/${action.image}`"
+        />
       </button>
     </div>
     <div
-      class="building__actions position-relative"
+      class="w3bo-building__actions w3bo-building__actions--available"
       v-if="availableActions.length"
-      style="z-index: 1"
     >
       <button
         :style="{
@@ -32,10 +34,13 @@
         v-for="action in availableActions"
         :key="action.id"
         @click.prevent="doAction(action)"
-        class="building__action-button"
+        class="w3bo-building__action-button"
         :title="`${action.name}`"
       >
-        <img class="building__action-image" :src="`images/${action.image}`" />
+        <img
+          class="w3bo-building__action-image"
+          :src="`images/${action.image}`"
+        />
       </button>
     </div>
   </div>
@@ -86,49 +91,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-$size: 48px;
-
-.building {
-  &__image {
-    height: $size;
-    width: $size;
-  }
-
-  &__actions {
-    display: inline-grid;
-    grid-template-columns: $size $size $size $size;
-    grid-template-rows: $size $size $size;
-    grid-gap: 4px;
-    padding: 4px;
-    border-radius: 8px;
-    border: 6px solid hsl(0, 0%, 12%);
-    position: relative;
-
-    &--all-actions {
-      background-color: hsl(0, 0%, 16%);
-      box-shadow: 2px 2px 8px -2px hsl(0deg 0% 5%);
-    }
-  }
-
-  &__action-button {
-    margin: 0;
-    padding: 0;
-    height: $size;
-    width: $size;
-    transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
-
-    &:hover:not(:disabled),
-    &:focus:not(:disabled) {
-      transform: translateX(-1px) translateY(-1px);
-      box-shadow: 2px 2px 8px -4px hsl(0, 0%, 75%);
-    }
-  }
-
-  &__action-image {
-    width: $size;
-    height: $size;
-  }
-}
-</style>

@@ -1,0 +1,12 @@
+.w3bo-card {
+  border-radius: 8px;
+  border: 2px solid hsl(210, 10%, 18%);
+  box-shadow: 2px 2px 8px 4px hsl(210, 10%, 20%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+}

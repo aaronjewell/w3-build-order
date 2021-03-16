@@ -1,9 +1,9 @@
 <template>
-  <div class="items">
-    <ul class="d-flex flex-wrap list-unstyled">
+  <div class="w3bo-items">
+    <ul class="w3bo-items__list w3bo-list-unstyled">
       <li v-for="item in purchasedItems" v-bind:key="item._id">
         <img
-          class="items__image"
+          class="w3bo-items__image"
           :src="`images/${item.image}`"
           :alt="item.name"
         />
@@ -22,14 +22,3 @@ export default {
   },
 }
 </script>
-
-<style scoped lang="scss">
-$size: 48px;
-
-.items {
-  &__image {
-    width: $size;
-    height: $size;
-  }
-}
-</style>

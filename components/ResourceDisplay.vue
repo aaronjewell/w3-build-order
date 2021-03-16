@@ -1,57 +1,56 @@
 <template>
-  <div class="resource-display d-flex text-light py-2">
-    <div class="mr-auto d-flex justify-center">
-      <span
-        ><i class="far fa-clock"></i>&nbsp;<span
-          style="font-family: monospace; font-size: 1.125rem"
-          >{{ formatTime(gameTime) }}</span
-        ></span
+  <div class="w3bo-resource-display">
+    <div class="w3bo-resource-display__timer">
+      <span class="w3bo-resource-display__timer-time"
+        ><i class="far fa-clock"></i>&nbsp;<span>{{
+          formatTime(gameTime)
+        }}</span></span
       >
       <span
         :class="{ 'text-success': isPlaying }"
         @click="playFn"
-        style="font-size: 1.125rem"
-        class="ml-3"
+        class="w3bo-resource-display__timer-play"
         ><i class="far fa-play-circle"></i
       ></span>
-      <span @click="stopFn" style="font-size: 1.125rem" class="ml-2"
+      <span @click="stopFn" class="w3bo-resource-display__timer-stop"
         ><i class="far fa-stop-circle"></i
       ></span>
     </div>
-    <div class="mr-3">
+    <div class="w3bo-resource-display__miners">
       Miners: {{ miningWorkers.length || 0
       }}<button
         @click.prevent="removeMinerFn"
         v-if="miningWorkers.length"
-        class="ml-2 btn btn-sm btn-outline-secondary"
+        class="w3bo-resource-display__remove-worker w3bo-btn w3bo-btn--sm w3bo-btn--outline-secondary"
       >
         Remove
       </button>
     </div>
-    <div class="mr-5">
+    <div class="w3bo-resource-display__harvesters">
       Harvesters: {{ harvestingWorkers.length || 0
       }}<button
         @click.prevent="removeHarvesterFn"
         v-if="harvestingWorkers.length"
-        class="ml-2 btn btn-sm btn-outline-secondary"
+        class="w3bo-resource-display__remove-worker w3bo-btn w3bo-btn--sm w3bo-btn--outline-secondary"
       >
         Remove
       </button>
     </div>
     <div>
-      <img class="resource-display__icon" src="images/common/icongold.gif" />{{
-        ` ${gold}`
-      }}
+      <img
+        class="w3bo-resource-display__icon"
+        src="images/common/icongold.gif"
+      />{{ ` ${gold}` }}
     </div>
     <div>
       <img
-        class="resource-display__icon"
+        class="w3bo-resource-display__icon"
         src="images/common/iconlumber.gif"
       />{{ ` ${lumber}` }}
     </div>
     <div>
       <img
-        class="resource-display__icon"
+        class="w3bo-resource-display__icon"
         src="images/common/iconsupply.gif"
       />{{ ` ${supplyUsed}/${supplyTotal}` }}
     </div>
@@ -106,23 +105,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.resource-display {
-  align-items: center;
-
-  & > * {
-    display: flex;
-    align-items: center;
-    font-size: 0.875rem;
-
-    &:not(:last-child) {
-      margin-right: 16px;
-    }
-  }
-
-  &__icon {
-    margin-right: 8px;
-  }
-}
-</style>

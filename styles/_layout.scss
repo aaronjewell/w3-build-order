@@ -1,0 +1,55 @@
+.w3bo-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+.w3bo-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.w3bo-col,
+.w3bo-col-6 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.w3bo-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.w3bo-col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.w3bo-section {
+  margin-bottom: 32px;
+  padding: 16px;
+  padding-top: 8px;
+  border: 2px solid hsl(210, 10%, 18%);
+  box-shadow: 2px 2px 8px 4px hsl(210, 10%, 20%);
+  border-radius: 8px;
+}

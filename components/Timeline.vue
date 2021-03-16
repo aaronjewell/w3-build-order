@@ -1,9 +1,9 @@
 <template>
-  <div class="pt-3 pb-5 d-flex align-items-center">
+  <div class="w3bo-timeline">
     <button :disabled="tick <= 0" @click.prevent="changeTickFn(tick - 1)">
       <i class="fas fa-step-backward"></i>
     </button>
-    <div class="w-100 px-3">
+    <div class="w3bo-timeline__slider">
       <vue-slider
         @change="changeTickFn"
         :marks="marks"

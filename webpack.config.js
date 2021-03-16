@@ -1,8 +1,9 @@
-const { join } = require("path");
-const Sass = require("sass");
-const { fileURLToPath } = require("url");
-const VueLoaderPlugin = require("vue-loader/lib/plugin.js");
-
+const { join } = require("path")
+const Sass = require("sass")
+const { fileURLToPath } = require("url")
+const VueLoaderPlugin = require("vue-loader/lib/plugin.js")
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin
 
 module.exports = {
   entry: "./index.js",
@@ -26,7 +27,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file),
+        exclude: file => /node_modules/.test(file) && !/\.vue\.js/.test(file),
       },
       {
         test: /\.css$/,
@@ -48,6 +49,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [new VueLoaderPlugin(), new BundleAnalyzerPlugin()],
   mode: "development",
-};
+}

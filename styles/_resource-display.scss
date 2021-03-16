@@ -1,0 +1,50 @@
+.w3bo-resource-display {
+  display: flex;
+  align-items: center;
+  color: #f8f9fa !important;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+
+  & > * {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  &__timer {
+    margin-right: auto !important;
+    display: flex;
+    justify-content: center;
+
+    &-time {
+      font-family: monospace;
+      font-size: 1.125rem;
+    }
+
+    &-play,
+    &-stop {
+      margin-left: 1rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  &__miners {
+    margin-right: 1rem;
+  }
+
+  &__harvesters {
+    margin-right: 3rem;
+  }
+
+  &__remove-worker {
+    margin-left: 0.5rem;
+  }
+
+  &__icon {
+    margin-right: 8px;
+  }
+}

@@ -199,7 +199,7 @@ import UpgradeList from "./UpgradeList.vue"
 import WorkerActions from "./WorkerActions.vue"
 
 export default {
-  name: "App",
+  name: "BuildOrder",
   components: {
     ActionList,
     BuildingActions,

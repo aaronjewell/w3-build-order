@@ -1,10 +1,3 @@
-import Vue from "vue"
+import BuildOrder from "./components/BuildOrder"
 
-import App from "./components/App.vue"
-
-const app = new Vue({
-  el: "#app",
-  components: {
-    App,
-  },
-})
+export default BuildOrder

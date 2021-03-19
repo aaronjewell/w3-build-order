@@ -6,10 +6,10 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin
 
 module.exports = {
-  entry: "./index.js",
+  entry: "./demo.js",
   output: {
     path: join(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "demo.js",
   },
   resolve: {
     alias: {

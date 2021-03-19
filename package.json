@@ -20,7 +20,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "bootstrap": "^4.6.0",
     "lodash.clonedeep": "^4.5.0",
     "vue": "^2.6.12",
     "vue-slider-component": "^3.2.11"

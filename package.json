@@ -2,7 +2,7 @@
   "name": "w3buildorder",
   "version": "1.0.2",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "jest --watchAll",
     "watch": "webpack --watch",
@@ -10,9 +10,6 @@
     "build:demo": "NODE_ENV=production webpack --mode=production",
     "lint": "prettier-eslint --write --list-different \"$PWD/lib/**/*.js\""
   },
-  "sideEffects": [
-    "*.scss"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",

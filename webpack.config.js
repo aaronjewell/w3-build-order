@@ -5,7 +5,7 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin.js")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
-  entry: ["./index.js", "./styles/index.scss"],
+  entry: ["./index.js"],
   output: {
     path: join(__dirname, "dist"),
     filename: "[name].js",

@@ -26,7 +26,7 @@
           <div class="w3bo-building__display">
             <img
               class="w3bo-building__image"
-              :src="`images/${building.image}`"
+              :src="require(`../images/${building.image}`)"
               :alt="building.name"
             />
           </div>

@@ -2,13 +2,11 @@ const { join } = require("path")
 const Sass = require("sass")
 const { fileURLToPath } = require("url")
 const VueLoaderPlugin = require("vue-loader/lib/plugin.js")
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin
 
 module.exports = {
   entry: "./demo.js",
   output: {
-    path: join(__dirname, "dist"),
+    path: join(__dirname, "docs"),
     filename: "demo.js",
   },
   resolve: {
@@ -49,6 +47,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin(), new BundleAnalyzerPlugin()],
+  plugins: [new VueLoaderPlugin()],
   mode: "development",
 }

@@ -2,12 +2,13 @@ const { join } = require("path")
 const Sass = require("sass")
 const { fileURLToPath } = require("url")
 const VueLoaderPlugin = require("vue-loader/lib/plugin.js")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
-  entry: "./demo.js",
+  entry: ["./index.js", "./styles/index.scss"],
   output: {
-    path: join(__dirname, "docs"),
-    filename: "demo.js",
+    path: join(__dirname, "dist"),
+    filename: "[name].js",
   },
   resolve: {
     alias: {
@@ -47,12 +48,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ["css-loader"],
       },
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           "css-loader",
           {
             loader: "sass-loader",
@@ -65,6 +66,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [new VueLoaderPlugin(), new MiniCssExtractPlugin()],
   mode: "development",
 }

@@ -18,7 +18,7 @@
       >
         <img
           class="w3bo-worker-actions__action-image"
-          :src="`images/${building.image}`"
+          :src="require(`../images/${building.image}`)"
         />
       </button>
     </div>
@@ -40,7 +40,7 @@
       >
         <img
           class="w3bo-worker-actions__action-image"
-          :src="`images/${building.image}`"
+          :src="require(`../images/${building.image}`)"
         />
       </button>
       <button
@@ -54,7 +54,7 @@
       >
         <img
           class="w3bo-worker-actions__action-image"
-          :src="`images/common/chestofgold.png`"
+          :src="require(`../images/common/chestofgold.png`)"
         />
       </button>
       <button
@@ -68,7 +68,7 @@
       >
         <img
           class="w3bo-worker-actions__action-image"
-          :src="`images/common/lumber.png`"
+          :src="require(`../images/common/lumber.png`)"
         />
       </button>
     </div>

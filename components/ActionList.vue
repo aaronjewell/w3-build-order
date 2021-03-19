@@ -11,7 +11,7 @@
           <span>{{ formatTime(action.start) }}</span
           >&nbsp;<img
             class="w3bo-action__image"
-            :src="`images/${image(action)}`"
+            :src="require(`../images/${image(action)}`)"
           /><span>{{ label(action) }}</span
           >&nbsp;<span v-if="action.error">{{ action.error }}</span>
           <button

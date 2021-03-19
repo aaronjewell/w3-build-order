@@ -39,19 +39,19 @@
     <div>
       <img
         class="w3bo-resource-display__icon"
-        src="images/common/icongold.gif"
+        :src="require('../images/common/icongold.gif')"
       />{{ ` ${gold}` }}
     </div>
     <div>
       <img
         class="w3bo-resource-display__icon"
-        src="images/common/iconlumber.gif"
+        :src="require('../images/common/iconlumber.gif')"
       />{{ ` ${lumber}` }}
     </div>
     <div>
       <img
         class="w3bo-resource-display__icon"
-        src="images/common/iconsupply.gif"
+        :src="require('../images/common/iconsupply.gif')"
       />{{ ` ${supplyUsed}/${supplyTotal}` }}
     </div>
   </div>

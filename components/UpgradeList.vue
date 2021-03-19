@@ -4,7 +4,7 @@
       <li v-for="upgrade in completedUpgrades" v-bind:key="upgrade._id">
         <img
           class="w3bo-upgrades__image"
-          :src="`images/${upgrade.image}`"
+          :src="require(`../images/${upgrade.image}`)"
           :alt="upgrade.name"
         />
       </li>

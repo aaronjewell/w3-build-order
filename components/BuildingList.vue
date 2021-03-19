@@ -11,7 +11,7 @@
           <div class="w3bo-building__display">
             <img
               class="w3bo-building__image"
-              :src="`images/${building.image}`"
+              :src="require(`../images/${building.image}`)"
               :alt="building.name"
             />
           </div>
@@ -41,7 +41,7 @@
           <div class="w3bo-building__display">
             <img
               class="w3bo-building__image"
-              :src="`images/${inprogress.unit.image}`"
+              :src="require(`../images/${inprogress.unit.image}`)"
               :alt="inprogress.unit.name"
             />
           </div>

@@ -4,7 +4,7 @@
       <li v-for="item in purchasedItems" v-bind:key="item._id">
         <img
           class="w3bo-items__image"
-          :src="`images/${item.image}`"
+          :src="require(`../images/${item.image}`)"
           :alt="item.name"
         />
       </li>

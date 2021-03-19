@@ -18,7 +18,7 @@
       >
         <img
           class="w3bo-building__action-image"
-          :src="`images/${action.image}`"
+          :src="require(`../images/${action.image}`)"
         />
       </button>
     </div>
@@ -39,7 +39,7 @@
       >
         <img
           class="w3bo-building__action-image"
-          :src="`images/${action.image}`"
+          :src="require(`../images/${action.image}`)"
         />
       </button>
     </div>

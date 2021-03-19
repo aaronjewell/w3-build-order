@@ -11,7 +11,7 @@
           <div class="w3bo-unit__display">
             <img
               class="w3bo-unit__image"
-              :src="`images/${unit.image}`"
+              :src="require(`../images/${unit.image}`)"
               :alt="unit.name"
             />
           </div>
@@ -24,7 +24,7 @@
           <div class="w3bo-unit__display">
             <img
               class="w3bo-unit__image"
-              :src="`images/${unit.image}`"
+              :src="require(`../images/${unit.image}`)"
               :alt="unit.name"
             />
           </div>
@@ -39,7 +39,7 @@
           <div class="w3bo-unit__display">
             <img
               class="w3bo-unit__image"
-              :src="`images/${inprogress.unit.image}`"
+              :src="require(`../images/${inprogress.unit.image}`)"
               :alt="inprogress.unit.name"
             />
           </div>

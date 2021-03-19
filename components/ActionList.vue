@@ -11,7 +11,7 @@
           <span>{{ formatTime(action.start) }}</span
           >&nbsp;<img
             class="w3bo-action__image"
-            :src="require(`../images/${image(action)}`)"
+            :src="getImgUrl(image(action))"
           /><span>{{ label(action) }}</span
           >&nbsp;<span v-if="action.error">{{ action.error }}</span>
           <button
@@ -42,6 +42,7 @@
 
 <script>
 import { formatTime } from "../utils/time"
+import { getImgUrl } from "../utils/images"
 
 export default {
   name: "ActionList",
@@ -57,6 +58,7 @@ export default {
     },
   },
   methods: {
+    getImgUrl,
     label(action) {
       switch (action.type) {
         case "build":

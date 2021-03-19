@@ -4,7 +4,7 @@
       <li v-for="item in purchasedItems" v-bind:key="item._id">
         <img
           class="w3bo-items__image"
-          :src="require(`../images/${item.image}`)"
+          :src="getImgUrl(item.image)"
           :alt="item.name"
         />
       </li>
@@ -13,12 +13,17 @@
 </template>
 
 <script>
+import { getImgUrl } from "../utils/images"
+
 export default {
   name: "ItemList",
   props: {
     purchasedItems: {
       required: true,
     },
+  },
+  methods: {
+    getImgUrl,
   },
 }
 </script>

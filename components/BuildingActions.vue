@@ -18,7 +18,7 @@
       >
         <img
           class="w3bo-building__action-image"
-          :src="require(`../images/${action.image}`)"
+          :src="getImgUrl(action.image)"
         />
       </button>
     </div>
@@ -39,7 +39,7 @@
       >
         <img
           class="w3bo-building__action-image"
-          :src="require(`../images/${action.image}`)"
+          :src="getImgUrl(action.image)"
         />
       </button>
     </div>
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import { getImgUrl } from "../utils/images"
+
 export default {
   name: "BuildingActions",
   props: {
@@ -70,6 +72,7 @@ export default {
     },
   },
   methods: {
+    getImgUrl,
     doAction(entity) {
       this.$emit("action")
       switch (entity.type) {

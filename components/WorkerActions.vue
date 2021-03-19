@@ -18,7 +18,7 @@
       >
         <img
           class="w3bo-worker-actions__action-image"
-          :src="require(`../images/${building.image}`)"
+          :src="getImgUrl(building.image)"
         />
       </button>
     </div>
@@ -40,7 +40,7 @@
       >
         <img
           class="w3bo-worker-actions__action-image"
-          :src="require(`../images/${building.image}`)"
+          :src="getImgUrl(building.image)"
         />
       </button>
       <button
@@ -54,7 +54,7 @@
       >
         <img
           class="w3bo-worker-actions__action-image"
-          :src="require(`../images/common/chestofgold.png`)"
+          :src="getImgUrl('common/chestofgold.png')"
         />
       </button>
       <button
@@ -68,7 +68,7 @@
       >
         <img
           class="w3bo-worker-actions__action-image"
-          :src="require(`../images/common/lumber.png`)"
+          :src="getImgUrl('common/lumber.png')"
         />
       </button>
     </div>
@@ -130,6 +130,9 @@ export default {
     assignToLumber(unit) {
       this.$emit("action")
       return this.assignToLumberFn(unit)
+    },
+    getImgUrl(image) {
+      return require(`../images/${image}`)
     },
   },
 }

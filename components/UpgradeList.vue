@@ -4,7 +4,7 @@
       <li v-for="upgrade in completedUpgrades" v-bind:key="upgrade._id">
         <img
           class="w3bo-upgrades__image"
-          :src="require(`../images/${upgrade.image}`)"
+          :src="getImgUrl(upgrade.image)"
           :alt="upgrade.name"
         />
       </li>
@@ -18,6 +18,11 @@ export default {
   props: {
     completedUpgrades: {
       required: true,
+    },
+  },
+  methods: {
+    getImgUrl(image) {
+      return require(`../images/${image}`)
     },
   },
 }

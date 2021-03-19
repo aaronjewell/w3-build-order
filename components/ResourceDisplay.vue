@@ -39,19 +39,19 @@
     <div>
       <img
         class="w3bo-resource-display__icon"
-        :src="require('../images/common/icongold.gif')"
+        :src="getImgUrl('common/icongold.gif')"
       />{{ ` ${gold}` }}
     </div>
     <div>
       <img
         class="w3bo-resource-display__icon"
-        :src="require('../images/common/iconlumber.gif')"
+        :src="getImgUrl('common/iconlumber.gif')"
       />{{ ` ${lumber}` }}
     </div>
     <div>
       <img
         class="w3bo-resource-display__icon"
-        :src="require('../images/common/iconsupply.gif')"
+        :src="getImgUrl('common/iconsupply.gif')"
       />{{ ` ${supplyUsed}/${supplyTotal}` }}
     </div>
   </div>
@@ -59,6 +59,7 @@
 
 <script>
 import { formatTime } from "../utils/time"
+import { getImgUrl } from "../utils/images"
 
 export default {
   name: "ResourceDisplay",
@@ -102,6 +103,7 @@ export default {
   },
   methods: {
     formatTime,
+    getImgUrl,
   },
 }
 </script>

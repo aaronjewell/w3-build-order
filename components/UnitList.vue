@@ -11,7 +11,7 @@
           <div class="w3bo-unit__display">
             <img
               class="w3bo-unit__image"
-              :src="require(`../images/${unit.image}`)"
+              :src="getImgUrl(unit.image)"
               :alt="unit.name"
             />
           </div>
@@ -24,7 +24,7 @@
           <div class="w3bo-unit__display">
             <img
               class="w3bo-unit__image"
-              :src="require(`../images/${unit.image}`)"
+              :src="getImgUrl(unit.image)"
               :alt="unit.name"
             />
           </div>
@@ -39,7 +39,7 @@
           <div class="w3bo-unit__display">
             <img
               class="w3bo-unit__image"
-              :src="require(`../images/${inprogress.unit.image}`)"
+              :src="getImgUrl(inprogress.unit.image)"
               :alt="inprogress.unit.name"
             />
           </div>
@@ -80,6 +80,9 @@ export default {
     },
   },
   methods: {
+    getImgUrl(image) {
+      return require(`../images/${image}`)
+    },
     availableUnit(completed) {
       return this.units.find(u => u._id === completed._id)
     },

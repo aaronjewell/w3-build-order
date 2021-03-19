@@ -28,6 +28,12 @@ module.exports = {
               esModule: false,
             },
           },
+          {
+            loader: "image-webpack-loader",
+            options: {
+              disable: true, // webpack@2.x and newer
+            },
+          },
         ],
       },
       {

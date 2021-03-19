@@ -11,7 +11,7 @@
           <div class="w3bo-building__display">
             <img
               class="w3bo-building__image"
-              :src="require(`../images/${building.image}`)"
+              :src="getImgUrl(building.image)"
               :alt="building.name"
             />
           </div>
@@ -26,7 +26,7 @@
           <div class="w3bo-building__display">
             <img
               class="w3bo-building__image"
-              :src="require(`../images/${building.image}`)"
+              :src="getImgUrl(building.image)"
               :alt="building.name"
             />
           </div>
@@ -41,7 +41,7 @@
           <div class="w3bo-building__display">
             <img
               class="w3bo-building__image"
-              :src="require(`../images/${inprogress.unit.image}`)"
+              :src="getImgUrl(inprogress.unit.image)"
               :alt="inprogress.unit.name"
             />
           </div>
@@ -60,6 +60,8 @@
 </template>
 
 <script>
+import { getImgUrl } from "../utils/images"
+
 export default {
   name: "BuildingList",
   props: {
@@ -82,6 +84,7 @@ export default {
     },
   },
   methods: {
+    getImgUrl,
     availableBuilding(completed) {
       return (
         this.buildings.find(b => b._id === completed._id) ||

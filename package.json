@@ -1,6 +1,6 @@
 {
   "name": "@aaronjewell/w3-build-order",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Library for configuring a build order in Warcraft 3",
   "main": "dist/w3-build-order.cjs.js",
   "module": "dist/w3-build-order.esm.js",

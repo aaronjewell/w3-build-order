@@ -1,7 +1,7 @@
 {
   "name": "@aaronjewell/w3-build-order",
-  "version": "1.0.3",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Library for configuring a build order in Warcraft 3",
   "main": "dist/w3-build-order.cjs.js",
   "module": "dist/w3-build-order.esm.js",
   "browser": "dist/w3-build-order.umd.js",
@@ -12,8 +12,12 @@
     "test:watch": "jest --watchAll",
     "lint": "prettier-eslint --write --list-different \"$PWD/lib/**/*.js\""
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Warcraft 3",
+    "Build Order",
+    "WC3"
+  ],
+  "author": "Aaron Jewell <me@aaronjewell.dev>",
   "license": "ISC",
   "dependencies": {
     "lodash.clonedeep": "^4.5.0"

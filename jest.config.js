@@ -1,13 +1,13 @@
 module.exports = {
-  roots: ["<rootDir>/lib/"],
+  roots: ["<rootDir>/src/"],
   moduleFileExtensions: ["js"],
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/lib/$1",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
   transform: {
     "^.+\\.js$": "babel-jest",
   },
   collectCoverage: true,
-  collectCoverageFrom: ["<rootDir>/lib/**/*.js"],
+  collectCoverageFrom: ["<rootDir>/src/**/*.js"],
   coverageDirectory: "<rootDir>/coverage",
 }

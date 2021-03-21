@@ -3,7 +3,7 @@ import Orc from "./Orc"
 
 describe("BuildOrder", () => {
   it("should start with resources", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     const atZero = buildOrder.resourceManager.resourcesAt(0)
 
@@ -14,27 +14,27 @@ describe("BuildOrder", () => {
   })
 
   it("should default to tick 0", () => {
-    const state = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
-    expect(state.tick).toEqual(0)
+    expect(buildOrder.tick).toEqual(0)
   })
 
   it("should have units", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     expect(buildOrder.units.length).toEqual(5)
     expect(buildOrder.units.every(u => u.id === "peon")).toEqual(true)
   })
 
   it("should have buildings", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     expect(buildOrder.buildings.length).toEqual(1)
     expect(buildOrder.buildings[0].id).toEqual("greatHall")
   })
 
   it("should have completed upgrades", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     const pillageData = Orc.upgrades.find(u => u.id === "pillage")
     const greatHall = buildOrder.completedBuildings.find(
@@ -50,25 +50,25 @@ describe("BuildOrder", () => {
   })
 
   it("should have available buildings to build", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     expect(buildOrder.availableBuildings().length > 0).toEqual(true)
   })
 
   it("should have gold", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     expect(buildOrder.gold).toEqual(Orc.startingResources.value.gold)
   })
 
   it("should have lumber", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     expect(buildOrder.lumber).toEqual(Orc.startingResources.value.lumber)
   })
 
   it("should have remaining supply", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
     const usedSupply = Orc.startingResources.value.units.reduce(
       (supply, u) => supply + u.supply,
       0,
@@ -79,7 +79,7 @@ describe("BuildOrder", () => {
   })
 
   it("should have totalSupply", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
     const startingSupply = Orc.startingResources.value.supply
 
     expect(buildOrder.totalSupply).toEqual(startingSupply)
@@ -99,7 +99,7 @@ describe("BuildOrder", () => {
   })
 
   it("should have actions", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     expect(buildOrder.actions).toEqual([])
 
@@ -113,7 +113,7 @@ describe("BuildOrder", () => {
   })
 
   it("should have mining workers", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
     const [peon, ...restUnits] = buildOrder.units
 
     expect(buildOrder.miningWorkers.length).toEqual(0)
@@ -122,7 +122,7 @@ describe("BuildOrder", () => {
   })
 
   it("should have harvesting workers", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
     const [peon, ...restUnits] = buildOrder.units
 
     expect(buildOrder.harvestingWorkers.length).toEqual(0)
@@ -131,13 +131,13 @@ describe("BuildOrder", () => {
   })
 
   it("should have available buildings", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     expect(buildOrder.availableBuildings().length > 0).toEqual(true)
   })
 
   it("should have completed buildings", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     const worker = buildOrder.units.find(u => u.id === "peon")
     const orcBurrowData = buildOrder
@@ -166,7 +166,7 @@ describe("BuildOrder", () => {
   })
 
   it("should be able to reset the tick", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
 
     buildOrder.tick = 1
     buildOrder.reset()
@@ -176,7 +176,7 @@ describe("BuildOrder", () => {
 
   describe("allBuildings", () => {
     it("should return all buildings for the specific race", () => {
-      const buildOrder = new BuildOrder(Orc)
+      const buildOrder = new BuildOrder({ race: "orc" })
 
       expect(buildOrder.allBuildings).toEqual(Orc.buildings)
     })
@@ -184,7 +184,7 @@ describe("BuildOrder", () => {
 
   describe("availableUnitsForBuilding", () => {
     it("should return units that can be trained for a building at the tick", () => {
-      const buildOrder = new BuildOrder(Orc)
+      const buildOrder = new BuildOrder({ race: "orc" })
       const [greatHall, ...restBuildings] = buildOrder.buildings
       const [peon, ...restUnits] = buildOrder.units
       const peonData = Orc.units.find(u => u.id === "peon")
@@ -215,7 +215,7 @@ describe("BuildOrder", () => {
 
   describe("train", () => {
     it("should be able to train a unit", () => {
-      const buildOrder = new BuildOrder(Orc)
+      const buildOrder = new BuildOrder({ race: "orc" })
       const [greatHall, ...restBuildings] = buildOrder.buildings
       const peonData = Orc.units.find(u => u.id === "peon")
 
@@ -236,7 +236,7 @@ describe("BuildOrder", () => {
   })
 
   describe("assignToGold", () => {
-    const buildOrder = new BuildOrder(Orc)
+    const buildOrder = new BuildOrder({ race: "orc" })
     const [peon, ...restUnits] = buildOrder.units
 
     expect(buildOrder.units.length).toEqual(
@@ -250,7 +250,7 @@ describe("BuildOrder", () => {
 
   describe("removeAction", () => {
     it("should remove an action from the list", () => {
-      const buildOrder = new BuildOrder(Orc)
+      const buildOrder = new BuildOrder({ race: "orc" })
       const [peon, anotherPeon, ...restUnits] = buildOrder.units
 
       expect(buildOrder.actions.length).toEqual(0)
@@ -265,7 +265,7 @@ describe("BuildOrder", () => {
 
   describe("buy", () => {
     it("should add a buy action to the list of actions", () => {
-      const buildOrder = new BuildOrder(Orc)
+      const buildOrder = new BuildOrder({ race: "orc" })
 
       const healingSalveData = Orc.items.find(i => i.id === "healingSalve")
       const voodooLoungeData = Orc.buildings.find(b => b.id === "voodooLounge")
@@ -287,7 +287,7 @@ describe("BuildOrder", () => {
 
   describe("purchasedItems", () => {
     it("should have all the items that have been purchased at the current tick", () => {
-      const buildOrder = new BuildOrder(Orc)
+      const buildOrder = new BuildOrder({ race: "orc" })
 
       const healingSalveData = Orc.items.find(i => i.id === "healingSalve")
       const voodooLoungeData = Orc.buildings.find(b => b.id === "voodooLounge")
@@ -316,7 +316,7 @@ describe("BuildOrder", () => {
 
   describe("completedUnits", () => {
     it("should include all units that the race started with and any built, even if unavailable", () => {
-      const buildOrder = new BuildOrder(Orc)
+      const buildOrder = new BuildOrder({ race: "orc" })
 
       const peonData = Orc.units.find(i => i.id === "peon")
       const orcBurrowData = Orc.buildings.find(b => b.id === "orcBurrow")

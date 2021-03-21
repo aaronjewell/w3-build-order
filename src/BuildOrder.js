@@ -14,10 +14,16 @@ import Unit from "./Unit.js"
 export default class BuildOrder {
   /**
    * Create a build order.
-   * @param {Race} race - The race that should be used for this build order.
+   * @param {Options} race - The race that should be used for this build order.
    */
-  constructor(race) {
-    this.race = race
+  constructor({ race }) {
+    switch (race) {
+      case "orc":
+        this.race = Orc
+        break
+      default:
+        throw new Error("Race option must be one of: orc")
+    }
     this.reset()
     this.buildingManager = new BuildingManager(this.race)
     this.resourceManager = new ResourceManager()

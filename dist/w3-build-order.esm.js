@@ -2844,12 +2844,22 @@ var ResourceManager = /*#__PURE__*/function () {
 var BuildOrder = /*#__PURE__*/function () {
   /**
    * Create a build order.
-   * @param {Race} race - The race that should be used for this build order.
+   * @param {Options} race - The race that should be used for this build order.
    */
-  function BuildOrder(race) {
+  function BuildOrder(_ref) {
+    var race = _ref.race;
+
     _classCallCheck(this, BuildOrder);
 
-    this.race = race;
+    switch (race) {
+      case "orc":
+        this.race = Orc;
+        break;
+
+      default:
+        throw new Error("Race option must be one of: orc");
+    }
+
     this.reset();
     this.buildingManager = new BuildingManager(this.race);
     this.resourceManager = new ResourceManager();

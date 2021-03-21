@@ -1,17 +1,13 @@
 module.exports = {
-  roots: ["<rootDir>/lib/", "<rootDir>/components/"],
-  moduleFileExtensions: ["js", "vue"],
+  roots: ["<rootDir>/lib/"],
+  moduleFileExtensions: ["js"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/lib/$1",
   },
   transform: {
     "^.+\\.js$": "babel-jest",
-    "^.+\\.vue$": "vue-jest",
   },
-  snapshotSerializers: ["<rootDir>/node_modules/jest-serializer-vue"],
   collectCoverage: true,
-  collectCoverageFrom: [
-      "<rootDir>/lib/**/*.js"
-  ],
-  coverageDirectory: "<rootDir>/coverage"
-};
+  collectCoverageFrom: ["<rootDir>/lib/**/*.js"],
+  coverageDirectory: "<rootDir>/coverage",
+}

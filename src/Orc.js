@@ -9,21 +9,26 @@ import items from "../data/orc/items"
 import units from "../data/orc/units"
 import upgrades from "../data/orc/upgrades"
 
-const peonData = units.find(u => u.id === "peon")
-const greatHallData = buildings.find(b => b.id === "greatHall")
-
 export default class Orc extends Race {
   static label = "Orc"
 
   static id = "orc"
 
-  static buildings = buildings
+  static get buildings() {
+    return buildings[Orc.version]
+  }
 
-  static items = items
+  static get items() {
+    return items[Orc.version]
+  }
 
-  static units = units
+  static get units() {
+    return units[Orc.version]
+  }
 
-  static upgrades = upgrades
+  static get upgrades() {
+    return upgrades[Orc.version]
+  }
 
   static startingResources = new ResourceList({
     gold: 500,
@@ -40,6 +45,9 @@ export default class Orc extends Race {
       new Unit(peonData),
     ],
     buildings: [new Building(greatHallData)],
-    neutralBuildings: Orc.neutralBuildings.map(nb => new NeutralBuilding(nb)),
+    neutralBuildings: Orc.neutralBuildings.map((nb) => new NeutralBuilding(nb)),
   })
 }
+
+const peonData = units[Orc.version].find((u) => u.id === "peon")
+const greatHallData = buildings[Orc.version].find((b) => b.id === "greatHall")

@@ -1,6 +1,8 @@
 import neutralBuildings from "../data/neutral/buildings"
 
 export default class Race {
+  static version = "v1.32.9"
+
   buildings() {
     return this.constructor.buildings || []
   }
@@ -14,5 +16,7 @@ export default class Race {
     return this.constructor.upgrades || []
   }
 
-  static neutralBuildings = neutralBuildings
+  static get neutralBuildings() {
+    return neutralBuildings[Race.version]
+  }
 }

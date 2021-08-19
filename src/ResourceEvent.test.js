@@ -3,14 +3,16 @@ import ResourceEvent from "./ResourceEvent"
 import ResourceList from "./ResourceList"
 import Unit from "./Unit"
 
-import unitData from "../data/orc/units"
+import Orc from "./Orc"
+
+const unitData = Orc.units
 
 describe("ResourceEvent", () => {
   describe("loseResources", () => {
     it("should accept resource lists and plain objects", () => {
       const tick = 0
 
-      const peonData = unitData.find(u => u.id === "peon")
+      const peonData = unitData.find((u) => u.id === "peon")
       const peon = new Unit(peonData)
 
       const action = Action.assignToGold(tick, peon)
@@ -30,7 +32,7 @@ describe("ResourceEvent", () => {
     it("should store the resources that are lost for a specific action", () => {
       const tick = 0
 
-      const peonData = unitData.find(u => u.id === "peon")
+      const peonData = unitData.find((u) => u.id === "peon")
       const peon = new Unit(peonData)
 
       const action = Action.assignToGold(tick, peon)
@@ -49,7 +51,7 @@ describe("ResourceEvent", () => {
     it("should accept resource lists and plain objects", () => {
       const tick = 0
 
-      const peonData = unitData.find(u => u.id === "peon")
+      const peonData = unitData.find((u) => u.id === "peon")
       const peon = new Unit(peonData)
 
       const action = Action.assignToGold(tick, peon)
@@ -69,7 +71,7 @@ describe("ResourceEvent", () => {
     it("should store the resources that are lost for a specific action", () => {
       const tick = 0
 
-      const peonData = unitData.find(u => u.id === "peon")
+      const peonData = unitData.find((u) => u.id === "peon")
       const peon = new Unit(peonData)
 
       const action = Action.assignToGold(tick, peon)
